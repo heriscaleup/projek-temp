@@ -16,7 +16,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://wa.me/6281234567890"
+                href="https://wa.me/+6281296361446"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-green-400 hover:text-green-300 transition-colors"
@@ -66,7 +66,7 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Kontak</h4>
             <ul className="space-y-2 text-gray-300">
               <li>Email: info@rajafreezdriedfood.com</li>
-              <li>Phone: +62 812-3456-7890</li>
+              <li>Phone: +62 812-9636-1446</li>
               <li>Alamat: Jakarta, Indonesia</li>
             </ul>
           </div>
