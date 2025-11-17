@@ -237,7 +237,7 @@ export default function AboutPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://wa.me/6281234567890?text=Halo%20Raja%20Freeze%20Dried%20Food,%20saya%20tertarik%20untuk%20bergabung%20dengan%20program%20Anda"
+                href="https://wa.me/+6281296361446?text=Halo%20Raja%20Freeze%20Dried%20Food,%20saya%20tertarik%20untuk%20bergabung%20dengan%20program%20Anda"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-white text-green-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-colors duration-200"

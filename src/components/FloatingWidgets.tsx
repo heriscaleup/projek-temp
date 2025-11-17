@@ -8,7 +8,7 @@ const FloatingWidgets = () => {
       name: "WhatsApp",
       icon: "/whatsapp.svg",
       color: "bg-green-500 hover:bg-green-600",
-      link: "https://wa.me/6281234567890?text=Halo%20Raja%20Freeze%20Dried%20Food,%20saya%20tertarik%20dengan%20produk%20Anda",
+      link: "https://wa.me/+6281296361446?text=Halo%20Raja%20Freeze%20Dried%20Food,%20saya%20tertarik%20dengan%20produk%20Anda",
     },
     {
       name: "Tokopedia",

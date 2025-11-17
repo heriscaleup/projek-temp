@@ -57,8 +57,8 @@ export default function ContactPage() {
                     <div>
                       <h3 className="text-lg font-semibold text-gray-900 mb-1">Telepon</h3>
                       <p className="text-gray-600">
-                        <a href="tel:+6281234567890" className="hover:text-green-600 transition-colors">
-                          +62 812-3456-7890
+                        <a href="tel:+6281296361446" className="hover:text-green-600 transition-colors">
+                          +62 812-9636-1446
                         </a>
                       </p>
                     </div>
@@ -96,7 +96,7 @@ export default function ContactPage() {
                   <h3 className="text-xl font-bold text-gray-900 mb-6">Ikuti Kami</h3>
                   <div className="flex space-x-4">
                     <a
-                      href="https://wa.me/6281234567890"
+                      href="https://wa.me/+6281296361446"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bg-green-500 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-green-600 transition-colors"
@@ -128,7 +128,7 @@ export default function ContactPage() {
                 {/* Call to Action - WhatsApp */}
                 <div className="mt-12 text-center">
                   <a
-                    href="https://wa.me/6281234567890?text=Halo%20Raja%20Freeze%20Dried%20Food,%20saya%20ingin%20menghubungi%20Anda"
+                    href="https://wa.me/+6281296361446?text=Halo%20Raja%20Freeze%20Dried%20Food,%20saya%20ingin%20menghubungi%20Anda"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-green-700 transition-colors duration-200 inline-block"
