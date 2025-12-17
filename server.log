@@ -1,0 +1,306 @@
+npm warn exec The following package was not found and will be installed: serve@14.2.5
+ INFO  Accepting connections at http://localhost:3000
+ HTTP  12/17/2025 11:13:23 AM ::1 GET /
+ HTTP  12/17/2025 11:13:23 AM ::1 Returned 200 in 44 ms
+ HTTP  12/17/2025 11:13:23 AM ::1 GET /_next/static/media/e4af272ccee01ff0-s.p.woff2
+ HTTP  12/17/2025 11:13:23 AM ::1 GET /_next/static/css/860f246758a58369.css
+ HTTP  12/17/2025 11:13:23 AM ::1 GET /_next/static/media/fotoawalhero.34dbc3ec.webp
+ HTTP  12/17/2025 11:13:23 AM ::1 GET /_next/static/media/slider1.49eecce8.webp
+ HTTP  12/17/2025 11:13:23 AM ::1 Returned 200 in 6 ms
+ HTTP  12/17/2025 11:13:23 AM ::1 Returned 200 in 5 ms
+ HTTP  12/17/2025 11:13:23 AM ::1 Returned 200 in 7 ms
+ HTTP  12/17/2025 11:13:23 AM ::1 Returned 200 in 5 ms
+ HTTP  12/17/2025 11:13:23 AM ::1 GET /_next/static/chunks/webpack-51d76c0bd3d79be3.js
+ HTTP  12/17/2025 11:13:23 AM ::1 GET /_next/static/chunks/4bd1b696-cf72ae8a39fa05aa.js
+ HTTP  12/17/2025 11:13:23 AM ::1 Returned 200 in 3 ms
+ HTTP  12/17/2025 11:13:23 AM ::1 Returned 200 in 4 ms
+ HTTP  12/17/2025 11:13:23 AM ::1 GET /_next/static/chunks/964-1d8e3d2561872b55.js
+ HTTP  12/17/2025 11:13:23 AM ::1 GET /_next/static/chunks/main-app-69496ec153f69d22.js
+ HTTP  12/17/2025 11:13:23 AM ::1 GET /_next/static/chunks/874-88e24f0e286df0b2.js
+ HTTP  12/17/2025 11:13:23 AM ::1 GET /_next/static/chunks/app/error-f5616a0386b4c753.js
+ HTTP  12/17/2025 11:13:23 AM ::1 GET /_next/static/chunks/63-e2758006d17bcdf6.js
+ HTTP  12/17/2025 11:13:23 AM ::1 Returned 200 in 16 ms
+ HTTP  12/17/2025 11:13:23 AM ::1 Returned 200 in 16 ms
+ HTTP  12/17/2025 11:13:23 AM ::1 Returned 200 in 16 ms
+ HTTP  12/17/2025 11:13:23 AM ::1 Returned 200 in 18 ms
+ HTTP  12/17/2025 11:13:23 AM ::1 Returned 200 in 25 ms
+ HTTP  12/17/2025 11:13:23 AM ::1 GET /_next/static/chunks/app/not-found-4d0aad09ae14ec59.js
+ HTTP  12/17/2025 11:13:23 AM ::1 GET /_next/static/chunks/app/layout-84682f4fb8ab7373.js
+ HTTP  12/17/2025 11:13:23 AM ::1 Returned 200 in 6 ms
+ HTTP  12/17/2025 11:13:23 AM ::1 Returned 200 in 3 ms
+ HTTP  12/17/2025 11:13:23 AM ::1 GET /_next/static/chunks/app/page-dfd238631d167f6b.js
+ HTTP  12/17/2025 11:13:23 AM ::1 Returned 200 in 2 ms
+ HTTP  12/17/2025 11:13:24 AM ::1 GET /favicon.webp
+ HTTP  12/17/2025 11:13:24 AM ::1 GET /_next/static/media/slider2.01c50927.webp
+ HTTP  12/17/2025 11:13:24 AM ::1 GET /_next/static/media/slider3.9a26a569.webp
+ HTTP  12/17/2025 11:13:24 AM ::1 GET /_next/static/media/durian.c2a0c853.webp
+ HTTP  12/17/2025 11:13:24 AM ::1 GET /_next/static/media/tokped.b106a58d.svg
+ HTTP  12/17/2025 11:13:24 AM ::1 GET /_next/static/media/manggis.3660a255.webp
+ HTTP  12/17/2025 11:13:24 AM ::1 Returned 200 in 4 ms
+ HTTP  12/17/2025 11:13:24 AM ::1 Returned 200 in 5 ms
+ HTTP  12/17/2025 11:13:24 AM ::1 Returned 200 in 5 ms
+ HTTP  12/17/2025 11:13:24 AM ::1 Returned 200 in 4 ms
+ HTTP  12/17/2025 11:13:24 AM ::1 Returned 200 in 4 ms
+ HTTP  12/17/2025 11:13:24 AM ::1 Returned 200 in 13 ms
+ HTTP  12/17/2025 11:13:24 AM ::1 GET /_next/static/media/apel.a7d007bf.webp
+ HTTP  12/17/2025 11:13:24 AM ::1 GET /_next/static/media/mangga.62924ff8.webp
+ HTTP  12/17/2025 11:13:24 AM ::1 GET /_next/static/media/manggajusbar.c5d15920.webp
+ HTTP  12/17/2025 11:13:24 AM ::1 GET /_next/static/media/pisang.0e06c7e7.webp
+ HTTP  12/17/2025 11:13:24 AM ::1 Returned 200 in 14 ms
+ HTTP  12/17/2025 11:13:24 AM ::1 Returned 200 in 8 ms
+ HTTP  12/17/2025 11:13:24 AM ::1 Returned 200 in 9 ms
+ HTTP  12/17/2025 11:13:24 AM ::1 Returned 200 in 9 ms
+ HTTP  12/17/2025 11:13:24 AM ::1 GET /_next/static/chunks/490.5a40e0baee8190f4.js
+ HTTP  12/17/2025 11:13:24 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:13:24 AM ::1 GET /blog.txt?_rsc=3lb4g
+ HTTP  12/17/2025 11:13:24 AM ::1 Returned 200 in 2 ms
+ HTTP  12/17/2025 11:13:24 AM ::1 GET /about.txt?_rsc=3lb4g
+ HTTP  12/17/2025 11:13:24 AM ::1 GET /contact.txt?_rsc=3lb4g
+ HTTP  12/17/2025 11:13:24 AM ::1 Returned 200 in 6 ms
+ HTTP  12/17/2025 11:13:24 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:13:24 AM ::1 GET /_next/static/chunks/app/blog/page-336e61aef9cd8262.js
+ HTTP  12/17/2025 11:13:24 AM ::1 Returned 200 in 2 ms
+ HTTP  12/17/2025 11:13:24 AM ::1 GET /_next/static/media/whatsapp.f4cddc92.svg
+ HTTP  12/17/2025 11:13:24 AM ::1 Returned 200 in 3 ms
+ HTTP  12/17/2025 11:13:24 AM ::1 GET /_next/static/chunks/app/about/page-0d84c198d22649ad.js
+ HTTP  12/17/2025 11:13:24 AM ::1 GET /_next/static/chunks/app/contact/page-3998743fdb6ea5b0.js
+ HTTP  12/17/2025 11:13:24 AM ::1 Returned 200 in 2 ms
+ HTTP  12/17/2025 11:13:24 AM ::1 Returned 200 in 2 ms
+ HTTP  12/17/2025 11:13:29 AM ::1 GET /blog
+ HTTP  12/17/2025 11:13:29 AM ::1 Returned 200 in 2 ms
+ HTTP  12/17/2025 11:13:29 AM ::1 GET /_next/static/media/e4af272ccee01ff0-s.p.woff2
+ HTTP  12/17/2025 11:13:29 AM ::1 GET /_next/static/css/860f246758a58369.css
+ HTTP  12/17/2025 11:13:29 AM ::1 Returned 304 in 1 ms
+ HTTP  12/17/2025 11:13:29 AM ::1 Returned 304 in 1 ms
+ HTTP  12/17/2025 11:13:29 AM ::1 GET /_next/static/chunks/webpack-51d76c0bd3d79be3.js
+ HTTP  12/17/2025 11:13:29 AM ::1 GET /_next/static/chunks/4bd1b696-cf72ae8a39fa05aa.js
+ HTTP  12/17/2025 11:13:29 AM ::1 Returned 304 in 1 ms
+ HTTP  12/17/2025 11:13:29 AM ::1 Returned 304 in 1 ms
+ HTTP  12/17/2025 11:13:29 AM ::1 GET /_next/static/chunks/964-1d8e3d2561872b55.js
+ HTTP  12/17/2025 11:13:29 AM ::1 GET /_next/static/chunks/main-app-69496ec153f69d22.js
+ HTTP  12/17/2025 11:13:29 AM ::1 GET /_next/static/chunks/874-88e24f0e286df0b2.js
+ HTTP  12/17/2025 11:13:29 AM ::1 GET /_next/static/chunks/app/error-f5616a0386b4c753.js
+ HTTP  12/17/2025 11:13:29 AM ::1 GET /_next/static/chunks/63-e2758006d17bcdf6.js
+ HTTP  12/17/2025 11:13:29 AM ::1 GET /_next/static/chunks/app/blog/page-336e61aef9cd8262.js
+ HTTP  12/17/2025 11:13:29 AM ::1 Returned 304 in 2 ms
+ HTTP  12/17/2025 11:13:29 AM ::1 Returned 304 in 2 ms
+ HTTP  12/17/2025 11:13:29 AM ::1 Returned 304 in 2 ms
+ HTTP  12/17/2025 11:13:29 AM ::1 Returned 304 in 2 ms
+ HTTP  12/17/2025 11:13:29 AM ::1 Returned 304 in 2 ms
+ HTTP  12/17/2025 11:13:29 AM ::1 Returned 304 in 2 ms
+ HTTP  12/17/2025 11:13:29 AM ::1 GET /_next/static/chunks/app/layout-84682f4fb8ab7373.js
+ HTTP  12/17/2025 11:13:29 AM ::1 Returned 304 in 1 ms
+ HTTP  12/17/2025 11:13:29 AM ::1 GET /favicon.webp
+ HTTP  12/17/2025 11:13:29 AM ::1 GET /raja-freeze-dried-manfaat-teknologi-solusi-makanan.jpg
+ HTTP  12/17/2025 11:13:29 AM ::1 GET /mengenal-teknologi-freeze-drying-inovasi-raja-free-2025-09-18.jpg
+ HTTP  12/17/2025 11:13:29 AM ::1 GET /keajaiban-freeze-drying-makanan-sehat-praktis-raja.jpg
+ HTTP  12/17/2025 11:13:29 AM ::1 Returned 304 in 4 ms
+ HTTP  12/17/2025 11:13:29 AM ::1 GET /freeze-drying-solusi-makanan-sehat-praktis-raja-fo.jpg
+ HTTP  12/17/2025 11:13:29 AM ::1 GET /rahasia-makanan-sehat-teknologi-freeze-drying-manf.jpg
+ HTTP  12/17/2025 11:13:29 AM ::1 GET /manfaat-makanan-freeze-dried-raja-nutrisi-optimal-.jpg
+ HTTP  12/17/2025 11:13:29 AM ::1 Returned 200 in 9 ms
+ HTTP  12/17/2025 11:13:29 AM ::1 GET /manfaat-freeze-dried-nutrisi-optimal-praktis-hidup.jpg
+ HTTP  12/17/2025 11:13:29 AM ::1 Returned 200 in 45 ms
+ HTTP  12/17/2025 11:13:29 AM ::1 Returned 200 in 52 ms
+ HTTP  12/17/2025 11:13:29 AM ::1 Returned 200 in 47 ms
+ HTTP  12/17/2025 11:13:29 AM ::1 Returned 200 in 50 ms
+ HTTP  12/17/2025 11:13:29 AM ::1 Returned 200 in 53 ms
+ HTTP  12/17/2025 11:13:29 AM ::1 Returned 200 in 58 ms
+ HTTP  12/17/2025 11:13:30 AM ::1 GET /manfaat-teknologi-freeze-drying-makanan-sehat-prak.jpg
+ HTTP  12/17/2025 11:13:30 AM ::1 GET /freeze-dried-food-nutrisi-optimal-praktis-aman-mas.jpg
+ HTTP  12/17/2025 11:13:30 AM ::1 GET /freeze-dried-revolusi-makanan-sehat-solusi-praktis.jpg
+ HTTP  12/17/2025 11:13:30 AM ::1 Returned 200 in 3 ms
+ HTTP  12/17/2025 11:13:30 AM ::1 GET /freeze-drying-rahasia-buah-awet-nutrisi-terjaga.jpg
+ HTTP  12/17/2025 11:13:30 AM ::1 GET /freeze-dried-food-rahasia-nutrisi-maksimal-praktis.jpg
+ HTTP  12/17/2025 11:13:30 AM ::1 GET /_next/static/chunks/490.5a40e0baee8190f4.js
+ HTTP  12/17/2025 11:13:30 AM ::1 Returned 304 in 1 ms
+ HTTP  12/17/2025 11:13:30 AM ::1 GET /index.txt?_rsc=hoa4u
+ HTTP  12/17/2025 11:13:30 AM ::1 GET /about.txt?_rsc=hoa4u
+ HTTP  12/17/2025 11:13:30 AM ::1 Returned 200 in 2 ms
+ HTTP  12/17/2025 11:13:30 AM ::1 Returned 200 in 4 ms
+ HTTP  12/17/2025 11:13:30 AM ::1 GET /contact.txt?_rsc=hoa4u
+ HTTP  12/17/2025 11:13:30 AM ::1 Returned 200 in 23 ms
+ HTTP  12/17/2025 11:13:30 AM ::1 Returned 200 in 2 ms
+ HTTP  12/17/2025 11:13:30 AM ::1 GET /blog/raja-freeze-dried-solusi-2025-10.txt?_rsc=hoa4u
+ HTTP  12/17/2025 11:13:30 AM ::1 Returned 200 in 20 ms
+ HTTP  12/17/2025 11:13:30 AM ::1 Returned 200 in 23 ms
+ HTTP  12/17/2025 11:13:30 AM ::1 Returned 200 in 5 ms
+ HTTP  12/17/2025 11:13:30 AM ::1 GET /blog/teknologi-freeze-drying-solusi-2025-10.txt?_rsc=hoa4u
+ HTTP  12/17/2025 11:13:30 AM ::1 Returned 200 in 53 ms
+ HTTP  12/17/2025 11:13:30 AM ::1 Returned 200 in 6 ms
+ HTTP  12/17/2025 11:13:30 AM ::1 GET /_next/static/media/tokped.b106a58d.svg
+ HTTP  12/17/2025 11:13:30 AM ::1 Returned 304 in 0 ms
+ HTTP  12/17/2025 11:13:30 AM ::1 GET /_next/static/media/whatsapp.f4cddc92.svg
+ HTTP  12/17/2025 11:13:30 AM ::1 Returned 304 in 1 ms
+ HTTP  12/17/2025 11:13:30 AM ::1 GET /_next/static/chunks/app/not-found-4d0aad09ae14ec59.js
+ HTTP  12/17/2025 11:13:30 AM ::1 GET /_next/static/chunks/app/page-dfd238631d167f6b.js
+ HTTP  12/17/2025 11:13:30 AM ::1 Returned 304 in 1 ms
+ HTTP  12/17/2025 11:13:30 AM ::1 Returned 304 in 1 ms
+ HTTP  12/17/2025 11:13:30 AM ::1 GET /blog/freeze-drying-ketahanan-pangan-2025-10.txt?_rsc=hoa4u
+ HTTP  12/17/2025 11:13:30 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:13:30 AM ::1 GET /_next/static/chunks/app/about/page-0d84c198d22649ad.js
+ HTTP  12/17/2025 11:13:30 AM ::1 GET /_next/static/chunks/app/contact/page-3998743fdb6ea5b0.js
+ HTTP  12/17/2025 11:13:30 AM ::1 Returned 304 in 4 ms
+ HTTP  12/17/2025 11:13:30 AM ::1 Returned 304 in 4 ms
+ HTTP  12/17/2025 11:13:31 AM ::1 GET /rahasia-freeze-drying-nutrisi-optimal-makanan-seha.jpg
+ HTTP  12/17/2025 11:13:31 AM ::1 GET /blog/raja-freeze-dried-inovasi-2025-10.txt?_rsc=hoa4u
+ HTTP  12/17/2025 11:13:31 AM ::1 GET /blog/freeze-drying-rantai-pasok-2025-10.txt?_rsc=hoa4u
+ HTTP  12/17/2025 11:13:31 AM ::1 GET /blog/freeze-drying-keajaiban-kuliner-2025-10.txt?_rsc=hoa4u
+ HTTP  12/17/2025 11:13:31 AM ::1 Returned 200 in 5 ms
+ HTTP  12/17/2025 11:13:31 AM ::1 Returned 200 in 5 ms
+ HTTP  12/17/2025 11:13:31 AM ::1 Returned 200 in 5 ms
+ HTTP  12/17/2025 11:13:31 AM ::1 Returned 200 in 13 ms
+ HTTP  12/17/2025 11:13:32 AM ::1 GET /freeze-dried-food-nutrisi-optimal-praktis-aman-mas.jpg
+ HTTP  12/17/2025 11:13:32 AM ::1 Returned 304 in 1 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 2 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /_next/static/media/e4af272ccee01ff0-s.p.woff2
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /_next/static/css/860f246758a58369.css
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /_next/static/media/fotoawalhero.34dbc3ec.webp
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /_next/static/media/slider1.49eecce8.webp
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 2 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /_next/static/chunks/webpack-51d76c0bd3d79be3.js
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /_next/static/chunks/4bd1b696-cf72ae8a39fa05aa.js
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /_next/static/chunks/964-1d8e3d2561872b55.js
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /_next/static/chunks/main-app-69496ec153f69d22.js
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /_next/static/chunks/874-88e24f0e286df0b2.js
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /_next/static/chunks/app/error-f5616a0386b4c753.js
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 2 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 2 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 2 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 2 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /_next/static/chunks/63-e2758006d17bcdf6.js
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 3 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /_next/static/chunks/app/not-found-4d0aad09ae14ec59.js
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /_next/static/chunks/app/layout-84682f4fb8ab7373.js
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 9 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /_next/static/chunks/app/page-dfd238631d167f6b.js
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 3 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /favicon.webp
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 0 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /_next/static/media/slider2.01c50927.webp
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /_next/static/media/slider3.9a26a569.webp
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /_next/static/media/durian.c2a0c853.webp
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /_next/static/media/tokped.b106a58d.svg
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 3 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 2 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /_next/static/media/manggis.3660a255.webp
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 2 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 2 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /_next/static/media/apel.a7d007bf.webp
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /_next/static/media/mangga.62924ff8.webp
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /_next/static/media/manggajusbar.c5d15920.webp
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /_next/static/media/pisang.0e06c7e7.webp
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 2 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 0 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /_next/static/chunks/490.5a40e0baee8190f4.js
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /blog.txt?_rsc=3lb4g
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 0 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /about.txt?_rsc=3lb4g
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /contact.txt?_rsc=3lb4g
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /_next/static/chunks/app/blog/page-336e61aef9cd8262.js
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 3 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /_next/static/chunks/app/about/page-0d84c198d22649ad.js
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /_next/static/chunks/app/contact/page-3998743fdb6ea5b0.js
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:14:03 AM ::1 GET /_next/static/media/whatsapp.f4cddc92.svg
+ HTTP  12/17/2025 11:14:03 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:14:08 AM ::1 GET /blog
+ HTTP  12/17/2025 11:14:08 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:14:08 AM ::1 GET /_next/static/media/e4af272ccee01ff0-s.p.woff2
+ HTTP  12/17/2025 11:14:08 AM ::1 GET /_next/static/css/860f246758a58369.css
+ HTTP  12/17/2025 11:14:08 AM ::1 Returned 304 in 1 ms
+ HTTP  12/17/2025 11:14:08 AM ::1 Returned 304 in 1 ms
+ HTTP  12/17/2025 11:14:08 AM ::1 GET /_next/static/chunks/webpack-51d76c0bd3d79be3.js
+ HTTP  12/17/2025 11:14:08 AM ::1 GET /_next/static/chunks/4bd1b696-cf72ae8a39fa05aa.js
+ HTTP  12/17/2025 11:14:08 AM ::1 Returned 304 in 1 ms
+ HTTP  12/17/2025 11:14:08 AM ::1 Returned 304 in 0 ms
+ HTTP  12/17/2025 11:14:08 AM ::1 GET /_next/static/chunks/964-1d8e3d2561872b55.js
+ HTTP  12/17/2025 11:14:08 AM ::1 GET /_next/static/chunks/main-app-69496ec153f69d22.js
+ HTTP  12/17/2025 11:14:08 AM ::1 Returned 304 in 1 ms
+ HTTP  12/17/2025 11:14:08 AM ::1 Returned 304 in 1 ms
+ HTTP  12/17/2025 11:14:08 AM ::1 GET /_next/static/chunks/874-88e24f0e286df0b2.js
+ HTTP  12/17/2025 11:14:08 AM ::1 GET /_next/static/chunks/app/error-f5616a0386b4c753.js
+ HTTP  12/17/2025 11:14:08 AM ::1 GET /_next/static/chunks/63-e2758006d17bcdf6.js
+ HTTP  12/17/2025 11:14:08 AM ::1 Returned 304 in 1 ms
+ HTTP  12/17/2025 11:14:08 AM ::1 Returned 304 in 1 ms
+ HTTP  12/17/2025 11:14:08 AM ::1 GET /_next/static/chunks/app/blog/page-336e61aef9cd8262.js
+ HTTP  12/17/2025 11:14:08 AM ::1 Returned 304 in 1 ms
+ HTTP  12/17/2025 11:14:08 AM ::1 GET /_next/static/chunks/app/layout-84682f4fb8ab7373.js
+ HTTP  12/17/2025 11:14:08 AM ::1 Returned 304 in 1 ms
+ HTTP  12/17/2025 11:14:08 AM ::1 Returned 304 in 0 ms
+ HTTP  12/17/2025 11:14:08 AM ::1 GET /favicon.webp
+ HTTP  12/17/2025 11:14:08 AM ::1 Returned 304 in 1 ms
+ HTTP  12/17/2025 11:14:08 AM ::1 GET /raja-freeze-dried-manfaat-teknologi-solusi-makanan.jpg
+ HTTP  12/17/2025 11:14:08 AM ::1 Returned 200 in 0 ms
+ HTTP  12/17/2025 11:14:08 AM ::1 GET /mengenal-teknologi-freeze-drying-inovasi-raja-free-2025-09-18.jpg
+ HTTP  12/17/2025 11:14:08 AM ::1 GET /keajaiban-freeze-drying-makanan-sehat-praktis-raja.jpg
+ HTTP  12/17/2025 11:14:08 AM ::1 GET /freeze-drying-solusi-makanan-sehat-praktis-raja-fo.jpg
+ HTTP  12/17/2025 11:14:08 AM ::1 GET /rahasia-makanan-sehat-teknologi-freeze-drying-manf.jpg
+ HTTP  12/17/2025 11:14:08 AM ::1 Returned 200 in 2 ms
+ HTTP  12/17/2025 11:14:08 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:14:08 AM ::1 Returned 200 in 2 ms
+ HTTP  12/17/2025 11:14:08 AM ::1 Returned 200 in 2 ms
+ HTTP  12/17/2025 11:14:08 AM ::1 GET /manfaat-makanan-freeze-dried-raja-nutrisi-optimal-.jpg
+ HTTP  12/17/2025 11:14:08 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:14:08 AM ::1 GET /manfaat-freeze-dried-nutrisi-optimal-praktis-hidup.jpg
+ HTTP  12/17/2025 11:14:08 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:14:08 AM ::1 GET /manfaat-teknologi-freeze-drying-makanan-sehat-prak.jpg
+ HTTP  12/17/2025 11:14:08 AM ::1 Returned 200 in 2 ms
+ HTTP  12/17/2025 11:14:08 AM ::1 GET /freeze-dried-food-nutrisi-optimal-praktis-aman-mas.jpg
+ HTTP  12/17/2025 11:14:08 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:14:08 AM ::1 GET /freeze-dried-revolusi-makanan-sehat-solusi-praktis.jpg
+ HTTP  12/17/2025 11:14:08 AM ::1 GET /freeze-drying-rahasia-buah-awet-nutrisi-terjaga.jpg
+ HTTP  12/17/2025 11:14:08 AM ::1 GET /freeze-dried-food-rahasia-nutrisi-maksimal-praktis.jpg
+ HTTP  12/17/2025 11:14:08 AM ::1 Returned 200 in 14 ms
+ HTTP  12/17/2025 11:14:08 AM ::1 Returned 200 in 9 ms
+ HTTP  12/17/2025 11:14:08 AM ::1 Returned 200 in 10 ms
+ HTTP  12/17/2025 11:14:09 AM ::1 GET /_next/static/chunks/490.5a40e0baee8190f4.js
+ HTTP  12/17/2025 11:14:09 AM ::1 GET /index.txt?_rsc=hoa4u
+ HTTP  12/17/2025 11:14:09 AM ::1 Returned 304 in 2 ms
+ HTTP  12/17/2025 11:14:09 AM ::1 Returned 200 in 3 ms
+ HTTP  12/17/2025 11:14:09 AM ::1 GET /about.txt?_rsc=hoa4u
+ HTTP  12/17/2025 11:14:09 AM ::1 Returned 200 in 2 ms
+ HTTP  12/17/2025 11:14:09 AM ::1 GET /contact.txt?_rsc=hoa4u
+ HTTP  12/17/2025 11:14:09 AM ::1 Returned 200 in 3 ms
+ HTTP  12/17/2025 11:14:09 AM ::1 GET /blog/raja-freeze-dried-solusi-2025-10.txt?_rsc=hoa4u
+ HTTP  12/17/2025 11:14:09 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:14:09 AM ::1 GET /blog/teknologi-freeze-drying-solusi-2025-10.txt?_rsc=hoa4u
+ HTTP  12/17/2025 11:14:09 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:14:09 AM ::1 GET /_next/static/chunks/app/not-found-4d0aad09ae14ec59.js
+ HTTP  12/17/2025 11:14:09 AM ::1 Returned 304 in 0 ms
+ HTTP  12/17/2025 11:14:09 AM ::1 GET /blog/freeze-drying-ketahanan-pangan-2025-10.txt?_rsc=hoa4u
+ HTTP  12/17/2025 11:14:09 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:14:09 AM ::1 GET /_next/static/chunks/app/page-dfd238631d167f6b.js
+ HTTP  12/17/2025 11:14:09 AM ::1 Returned 304 in 0 ms
+ HTTP  12/17/2025 11:14:09 AM ::1 GET /_next/static/chunks/app/about/page-0d84c198d22649ad.js
+ HTTP  12/17/2025 11:14:09 AM ::1 GET /_next/static/chunks/app/contact/page-3998743fdb6ea5b0.js
+ HTTP  12/17/2025 11:14:09 AM ::1 Returned 304 in 1 ms
+ HTTP  12/17/2025 11:14:09 AM ::1 Returned 304 in 2 ms
+ HTTP  12/17/2025 11:14:09 AM ::1 GET /_next/static/media/whatsapp.f4cddc92.svg
+ HTTP  12/17/2025 11:14:09 AM ::1 GET /_next/static/media/tokped.b106a58d.svg
+ HTTP  12/17/2025 11:14:09 AM ::1 Returned 304 in 1 ms
+ HTTP  12/17/2025 11:14:09 AM ::1 Returned 304 in 2 ms
+ HTTP  12/17/2025 11:14:11 AM ::1 GET /rahasia-freeze-drying-nutrisi-optimal-makanan-seha.jpg
+ HTTP  12/17/2025 11:14:11 AM ::1 GET /blog/raja-freeze-dried-inovasi-2025-10.txt?_rsc=jkwx0
+ HTTP  12/17/2025 11:14:11 AM ::1 GET /blog/freeze-drying-rantai-pasok-2025-10.txt?_rsc=jkwx0
+ HTTP  12/17/2025 11:14:11 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:14:11 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:14:11 AM ::1 Returned 200 in 2 ms
+ HTTP  12/17/2025 11:14:11 AM ::1 GET /blog/freeze-drying-keajaiban-kuliner-2025-10.txt?_rsc=jkwx0
+ HTTP  12/17/2025 11:14:11 AM ::1 Returned 200 in 1 ms
+ HTTP  12/17/2025 11:14:11 AM ::1 GET /freeze-dried-food-nutrisi-optimal-praktis-aman-mas.jpg
+ HTTP  12/17/2025 11:14:11 AM ::1 Returned 304 in 1 ms
