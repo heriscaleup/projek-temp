@@ -4,19 +4,32 @@ import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
+// Static Image Imports
+import durianImg from "@/assets/images/durian.webp";
+import manggisImg from "@/assets/images/manggis.webp";
+import apelImg from "@/assets/images/apel.webp";
+import manggaImg from "@/assets/images/mangga.webp";
+import manggaJusBarImg from "@/assets/images/manggajusbar.webp";
+import pisangImg from "@/assets/images/pisang.webp";
+import slider1Img from "@/assets/images/slider1.webp";
+import slider2Img from "@/assets/images/slider2.webp";
+import slider3Img from "@/assets/images/slider3.webp";
+import fotoAwalHeroImg from "@/assets/images/fotoawalhero.webp";
+import tokpedIcon from "@/assets/images/tokped.svg";
+
 const products = [
-  { name: "Durian", description: "Snack yang terbuat dari buah durian asli, diolah dengan teknologi canggih untuk menjaga rasa otentik dan nutrisi alaminya.", image: '/durian.webp', shopeeUrl: "#", tokopediaUrl: "#" },
-  { name: "Manggis", description: "Nikmati kelezatan manggis dalam bentuk keripik renyah. Penuh antioksidan dan rasa manis yang khas.", image: '/manggis.webp', shopeeUrl: "#", tokopediaUrl: "#" },
-  { name: "Apel", description: "Keripik apel renyah yang mempertahankan semua kebaikan buah apel segar. Camilan sehat tanpa rasa bersalah.", image: '/apel.webp', shopeeUrl: "#", tokopediaUrl: "#" },
-  { name: "Mangga", description: "Rasa manis mangga tropis yang intens dalam setiap gigitan. Sumber energi alami yang praktis dibawa.", image: '/mangga.webp', shopeeUrl: "#", tokopediaUrl: "#" },
-  { name: "Jus Bar Mangga", description: "Nangka pilihan dengan rasa manis otentik, diolah sempurna untuk menjaga tekstur dan aroma khasnya.", image: '/manggajusbar.webp', shopeeUrl: "#", tokopediaUrl: "#" },
-  { name: "Pisang", description: "Manisnya pisang asli dalam setiap gigitan renyah. Diproses dengan cermat untuk mengunci semua kebaikan buah.", image: '/pisang.webp', shopeeUrl: "#", tokopediaUrl: "#" },
+  { name: "Durian", description: "Snack yang terbuat dari buah durian asli, diolah dengan teknologi canggih untuk menjaga rasa otentik dan nutrisi alaminya.", image: durianImg, shopeeUrl: "#", tokopediaUrl: "#" },
+  { name: "Manggis", description: "Nikmati kelezatan manggis dalam bentuk keripik renyah. Penuh antioksidan dan rasa manis yang khas.", image: manggisImg, shopeeUrl: "#", tokopediaUrl: "#" },
+  { name: "Apel", description: "Keripik apel renyah yang mempertahankan semua kebaikan buah apel segar. Camilan sehat tanpa rasa bersalah.", image: apelImg, shopeeUrl: "#", tokopediaUrl: "#" },
+  { name: "Mangga", description: "Rasa manis mangga tropis yang intens dalam setiap gigitan. Sumber energi alami yang praktis dibawa.", image: manggaImg, shopeeUrl: "#", tokopediaUrl: "#" },
+  { name: "Jus Bar Mangga", description: "Nangka pilihan dengan rasa manis otentik, diolah sempurna untuk menjaga tekstur dan aroma khasnya.", image: manggaJusBarImg, shopeeUrl: "#", tokopediaUrl: "#" },
+  { name: "Pisang", description: "Manisnya pisang asli dalam setiap gigitan renyah. Diproses dengan cermat untuk mengunci semua kebaikan buah.", image: pisangImg, shopeeUrl: "#", tokopediaUrl: "#" },
 ];
 
 const sliderImages = [
-    '/slider1.webp',
-    '/slider2.webp',
-    '/slider3.webp',
+    slider1Img,
+    slider2Img,
+    slider3Img,
 ];
 
 // --- Kumpulan Ikon ---
@@ -54,14 +67,14 @@ export default function Home() {
               </div>
               <div className="w-full h-80 relative rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/fotoawalhero.webp"
+                  src={fotoAwalHeroImg}
                   alt="Produk Freeze Dried Unggulan"
                   fill
                   sizes="(min-width: 1024px) 50vw, 100vw"
                   priority
+                  placeholder="blur"
                   fetchPriority="high"
                   style={{ objectFit: 'cover' }}
-                  unoptimized={false}
                 />
               </div>
             </div>
@@ -80,15 +93,16 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-lg">
-                 {sliderImages.map((src, index) => (
-                    <div key={src} className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}>
+                 {sliderImages.map((img, index) => (
+                    <div key={index} className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}>
                         <Image
-                          src={src}
+                          src={img}
                           alt={`Slider Image ${index + 1}`}
                           fill
                           sizes="(min-width: 1024px) 50vw, 100vw"
                           priority={index === 0}
                           loading={index === 0 ? 'eager' : 'lazy'}
+                          placeholder="blur"
                           style={{ objectFit: 'cover' }}
                         />
                     </div>
@@ -132,6 +146,7 @@ export default function Home() {
                       alt={`Gambar ${product.name}`}
                       fill
                       sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                      placeholder="blur"
                       style={{ objectFit: 'cover' }}
                     />
                   </div>
@@ -140,7 +155,7 @@ export default function Home() {
                     <p className="mt-4 text-gray-600 flex-grow">{product.description}</p>
                     <div className="grid grid-cols-1 gap-4 mt-4">
       <a href="https://www.tokopedia.com/eenkfreeze" target="_blank" rel="noopener noreferrer" className="bg-green-600 text-white py-3 px-4 rounded-lg flex items-center justify-center hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-700/60" aria-label="Buka toko Tokopedia kami">
-        <Image src="/tokped.svg" alt="" aria-hidden width={24} height={24} className="mr-2" />
+        <Image src={tokpedIcon} alt="" aria-hidden width={24} height={24} className="mr-2" />
         Tokopedia
       </a>
     </div>
