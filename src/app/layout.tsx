@@ -66,7 +66,7 @@ const jsonLdOrganization: WithContext<Organization> = {
   logo: "https://rajafreezdriedfood.com/favicon.webp",
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+6281296361446",
+    telephone: "+6282124985339",
     contactType: "customer service",
   },
 };

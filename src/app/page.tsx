@@ -199,7 +199,7 @@ export default function Home() {
               Ini bukan sekadar kursus. Ini adalah tiket Anda untuk menciptakan produk inovatif, membangun brand yang kuat, dan meraih keuntungan di pasar makanan sehat. Dari teori fundamental hingga strategi bisnis yang terbukti, kami siapkan Anda menjadi ahli. ✨
             </p>
             <a
-              href="https://wa.me/+6281296361446?text=Halo%2C%20saya%20siap%20mengubah%20peluang%20menjadi%20keuntungan%20dengan%20kursus%20Freeze%20Drying."
+              href="https://wa.me/+6282124985339?text=Halo%2C%20saya%20siap%20mengubah%20peluang%20menjadi%20keuntungan%20dengan%20kursus%20Freeze%20Drying."
               target="_blank"
               rel="noopener noreferrer"
               className="mt-10 inline-block bg-orange-600 text-white font-bold py-4 px-10 rounded-lg text-lg hover:bg-orange-700 transition-colors transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-700/60"

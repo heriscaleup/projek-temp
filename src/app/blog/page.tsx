@@ -126,7 +126,7 @@ export default async function BlogPage() {
               dan informasi eksklusif tentang freeze drying.
             </p>
             <a
-              href="https://wa.me/+6281296361446?text=Halo%20Raja%20Freeze%20Dried%20Food,%20saya%20ingin%20berlangganan%20newsletter%20untuk%20mendapatkan%20update%20terbaru"
+              href="https://wa.me/+6282124985339?text=Halo%20Raja%20Freeze%20Dried%20Food,%20saya%20ingin%20berlangganan%20newsletter%20untuk%20mendapatkan%20update%20terbaru"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-green-700 transition-colors duration-200 inline-block"
