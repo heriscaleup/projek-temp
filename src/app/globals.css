@@ -18,3 +18,39 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ─── Hero entrance animations ─── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hero-fadein {
+  animation: fadeInUp 0.7s ease-out both;
+}
+
+.hero-fadein-right {
+  animation: fadeInRight 0.8s ease-out 0.15s both;
+}
+
+/* ─── Smooth scroll ─── */
+html {
+  scroll-behavior: smooth;
+}
