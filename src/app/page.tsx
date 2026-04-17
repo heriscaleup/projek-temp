@@ -43,36 +43,42 @@ const products = [
     description:
       "Cita rasa durian premium yang intens, diawetkan sempurna tanpa kehilangan aroma dan rasa khasnya.",
     image: durianImg,
+    tag: "Best Seller",
   },
   {
     name: "Manggis",
     description:
       "Antioksidan tinggi manggis terjaga utuh. Renyah, segar, dengan rasa manis-asam khas.",
     image: manggisImg,
+    tag: "Kaya Antioksidan",
   },
   {
     name: "Apel",
     description:
       "Snack sehat bebas pengawet dengan nutrisi apel segar yang terkunci sempurna dalam setiap keping.",
     image: apelImg,
+    tag: "Tanpa Pengawet",
   },
   {
     name: "Mangga",
     description:
       "Manisnya mangga tropis dalam bentuk renyah yang praktis dibawa ke mana saja.",
     image: manggaImg,
+    tag: "Favorit",
   },
   {
     name: "Jus Bar Mangga",
     description:
       "Inovasi jus bar mangga freeze dried — sensasi jus segar kapan saja, di mana saja.",
     image: manggaJusBarImg,
+    tag: "Inovasi",
   },
   {
     name: "Pisang",
     description:
       "Pisang premium pilihan dengan kandungan kalium dan energi alami, renyah dan tahan lama.",
     image: pisangImg,
+    tag: "Kaya Kalium",
   },
 ];
 
@@ -82,6 +88,7 @@ const testimonials = [
     city: "Surabaya",
     business: "Pemilik Toko Oleh-oleh",
     initials: "BS",
+    rating: 5,
     quote:
       "Kualitasnya luar biasa! Durian freeze dried tetap harum dan renyah sampai di tangan pelanggan. Toko saya langsung repeat order setiap minggu.",
   },
@@ -90,6 +97,7 @@ const testimonials = [
     city: "Bandung",
     business: "Brand Snack Sehat",
     initials: "SD",
+    rating: 5,
     quote:
       "Sudah pakai jasa FD ini 2 tahun untuk produk manggis saya. Proses cepat, kualitas stabil, dan tim sangat responsif. Highly recommended!",
   },
@@ -98,6 +106,7 @@ const testimonials = [
     city: "Medan",
     business: "Pengusaha UMKM Kuliner",
     initials: "AF",
+    rating: 5,
     quote:
       "Kirim 10kg buah lokal untuk di-freeze dry. Hasilnya memuaskan — tekstur dan warna terjaga sempurna. Worth it banget untuk bisnis saya!",
   },
@@ -117,16 +126,72 @@ const faqs = [
     a: "Minimum order kami adalah 5 kg untuk bahan segar. Untuk order di bawah minimum, silakan konsultasikan dulu dengan tim kami — kami berusaha memberikan solusi terbaik untuk semua skala bisnis.",
   },
   {
-    q: "Berapa lama proses pengiriman setelah selesai?",
+    q: "Berapa lama proses setelah bahan diterima?",
     a: "Proses freeze drying membutuhkan 3–7 hari kerja tergantung jenis dan volume bahan. Setelah selesai, produk dikemas vakum dan dikirim ke seluruh Indonesia via ekspedisi pilihan Anda.",
   },
   {
     q: "Apakah ada garansi kualitas?",
     a: "Ya! Kami memberikan garansi kualitas pada setiap batch produksi. Kami tersertifikasi P-IRT dan menggunakan mesin vacuum freeze dryer berstandar industri. Kepuasan pelanggan adalah prioritas utama kami.",
   },
+  {
+    q: "Apakah bisa menerima order dari luar Jakarta?",
+    a: "Tentu! Kami melayani klien dari seluruh Indonesia. Bahan dapat dikirim via ekspedisi ke fasilitas kami di Jakarta. Kami akan panduan cara pengemasan yang benar agar bahan tetap segar saat tiba.",
+  },
 ];
 
 const galleryImages = [slider1Img, slider2Img, slider3Img, fotoAwalHeroImg];
+
+// Comparison data
+const comparisonRows = [
+  {
+    label: "Retensi Nutrisi",
+    fd: "95%",
+    oven: "40%",
+    matahari: "30%",
+    pengalengan: "50%",
+    fdBest: true,
+  },
+  {
+    label: "Daya Tahan",
+    fd: "25 tahun",
+    oven: "6–12 bulan",
+    matahari: "3–6 bulan",
+    pengalengan: "2–5 tahun",
+    fdBest: true,
+  },
+  {
+    label: "Pengurangan Berat",
+    fd: "90%",
+    oven: "70%",
+    matahari: "60%",
+    pengalengan: "0%",
+    fdBest: true,
+  },
+  {
+    label: "Bahan Pengawet",
+    fd: "Tidak ada",
+    oven: "Sering ditambahkan",
+    matahari: "Sering ditambahkan",
+    pengalengan: "Ya (garam/gula)",
+    fdBest: true,
+  },
+  {
+    label: "Rasa & Tekstur",
+    fd: "Hampir sama aslinya",
+    oven: "Berubah signifikan",
+    matahari: "Berubah banyak",
+    pengalengan: "Berubah",
+    fdBest: true,
+  },
+  {
+    label: "Dapat Rehidrasi",
+    fd: "Ya, sempurna",
+    oven: "Sebagian",
+    matahari: "Tidak",
+    pengalengan: "Ya",
+    fdBest: true,
+  },
+];
 
 // ─── Hooks ──────────────────────────────────────────────────────────────────
 
@@ -147,7 +212,7 @@ function useCounter(target: number, duration: number, active: boolean) {
   return count;
 }
 
-function useReveal(threshold = 0.12) {
+function useReveal(threshold = 0.1) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
@@ -164,6 +229,31 @@ function useReveal(threshold = 0.12) {
     return () => obs.disconnect();
   }, [threshold]);
   return { ref, visible };
+}
+
+function useScrolled(px = 600) {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const handler = () => setScrolled(window.scrollY > px);
+    window.addEventListener("scroll", handler, { passive: true });
+    return () => window.removeEventListener("scroll", handler);
+  }, [px]);
+  return scrolled;
+}
+
+function useScrollProgress() {
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    const handler = () => {
+      const doc = document.documentElement;
+      const scrolled = doc.scrollTop;
+      const total = doc.scrollHeight - doc.clientHeight;
+      setProgress(total > 0 ? (scrolled / total) * 100 : 0);
+    };
+    window.addEventListener("scroll", handler, { passive: true });
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
+  return progress;
 }
 
 // ─── Sub-components ─────────────────────────────────────────────────────────
@@ -214,14 +304,30 @@ function WhatsAppIcon({ className = "w-5 h-5" }: { className?: string }) {
   );
 }
 
+function StarRating({ count = 5 }: { count?: number }) {
+  return (
+    <div className="flex gap-0.5">
+      {Array.from({ length: count }).map((_, i) => (
+        <svg key={i} className="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+        </svg>
+      ))}
+    </div>
+  );
+}
+
 // ─── Main Component ──────────────────────────────────────────────────────────
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [announcementVisible, setAnnouncementVisible] = useState(true);
   const [statsActive, setStatsActive] = useState(false);
   const statsRef = useRef<HTMLDivElement>(null);
 
-  // Stats counter triggers
+  const scrolled = useScrolled(700);
+  const scrollProgress = useScrollProgress();
+
+  // Stats counter trigger
   useEffect(() => {
     const obs = new IntersectionObserver(
       ([e]) => {
@@ -244,6 +350,8 @@ export default function Home() {
   // Section reveals
   const howRef = useReveal();
   const whyRef = useReveal();
+  const compRef = useReveal();
+  const jasaRef = useReveal();
   const productsRef = useReveal();
   const galleryRef = useReveal();
   const testimonialsRef = useReveal();
@@ -251,6 +359,39 @@ export default function Home() {
 
   return (
     <div className={jakarta.className}>
+      {/* ── Scroll Progress Bar ── */}
+      <div
+        className="fixed top-0 left-0 h-0.5 bg-orange-600 z-[60] transition-all duration-100 ease-out"
+        style={{ width: `${scrollProgress}%` }}
+        aria-hidden
+      />
+
+      {/* ══════════════════════════════════════════════
+          ANNOUNCEMENT BAR
+      ══════════════════════════════════════════════ */}
+      {announcementVisible && (
+        <div className="relative bg-orange-700 text-white text-sm py-2.5 px-4 text-center z-50">
+          <span className="font-semibold">
+            🎉 Promo Terbatas: Konsultasi GRATIS + Estimasi Harga dalam 1 Jam!
+          </span>
+          <a
+            href={WA_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-3 underline font-bold hover:text-orange-200 transition-colors"
+          >
+            Chat Sekarang →
+          </a>
+          <button
+            onClick={() => setAnnouncementVisible(false)}
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-xl leading-none"
+            aria-label="Tutup pengumuman"
+          >
+            ×
+          </button>
+        </div>
+      )}
+
       <Header />
 
       <main>
@@ -258,38 +399,36 @@ export default function Home() {
             HERO
         ══════════════════════════════════════════════ */}
         <section className="relative bg-white overflow-hidden">
-          {/* Angled warm bg block */}
+          {/* Angled warm bg */}
           <div
             className="absolute top-0 right-0 h-full w-[55%] bg-orange-50 hidden lg:block"
             style={{ clipPath: "polygon(8% 0, 100% 0, 100% 100%, 0% 100%)" }}
           />
-          {/* Decorative blur orb */}
-          <div className="absolute top-16 right-16 w-80 h-80 bg-orange-200 rounded-full opacity-30 blur-3xl pointer-events-none hidden lg:block" />
+          <div className="absolute top-20 right-20 w-72 h-72 bg-orange-200 rounded-full opacity-25 blur-3xl pointer-events-none hidden lg:block" />
+          <div className="absolute bottom-10 right-40 w-48 h-48 bg-amber-300 rounded-full opacity-20 blur-2xl pointer-events-none hidden lg:block" />
 
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
               {/* ── Left ── */}
               <div className="hero-fadein">
-                {/* Badge */}
-                <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-800 text-sm font-bold px-4 py-2 rounded-full mb-7">
+                {/* Eyebrow */}
+                <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-800 text-sm font-bold px-4 py-2 rounded-full mb-6">
                   <span className="w-2 h-2 bg-orange-600 rounded-full animate-pulse" />
-                  Pelopor Freeze Drying Indonesia
+                  Pelopor &amp; #1 Freeze Drying Indonesia
                 </div>
 
                 <h1
-                  className={`text-5xl md:text-6xl xl:text-[4.5rem] font-black leading-[1.08] text-gray-900 ${playfair.className}`}
+                  className={`text-5xl md:text-6xl xl:text-[4.25rem] font-black leading-[1.06] text-gray-900 ${playfair.className}`}
                 >
                   Jasa Freeze Dried
                   <span className="block text-orange-700">Makanan Custom</span>
                   <span className="block">#1 di Indonesia</span>
                 </h1>
 
-                <p className="mt-6 text-lg md:text-xl text-gray-600 leading-relaxed max-w-xl">
+                <p className="mt-6 text-lg text-gray-600 leading-relaxed max-w-[480px]">
                   Kirim bahan Anda, kami proses dengan mesin vakum terbaik —{" "}
-                  <strong className="text-gray-800">
-                    rasa &amp; nutrisi terjaga hingga 25 tahun
-                  </strong>
-                  . Tanpa pengawet. Tersertifikasi P-IRT.
+                  <strong className="text-gray-800">rasa &amp; nutrisi terjaga hingga 25 tahun</strong>.
+                  Tanpa pengawet. Tersertifikasi P-IRT.
                 </p>
 
                 {/* CTAs */}
@@ -298,38 +437,29 @@ export default function Home() {
                     href={WA_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-primary inline-flex items-center justify-center gap-3 bg-green-600 text-white font-bold px-8 py-4 rounded-2xl text-lg hover:bg-green-700 transition-all shadow-lg shadow-green-600/30 hover:shadow-green-600/50 hover:-translate-y-0.5"
+                    className="inline-flex items-center justify-center gap-3 bg-green-600 text-white font-extrabold px-8 py-4 rounded-2xl text-[17px] hover:bg-green-700 transition-all shadow-lg shadow-green-600/30 hover:shadow-green-700/40 hover:-translate-y-0.5"
                   >
                     <WhatsAppIcon className="w-5 h-5" />
                     Konsultasi Gratis via WhatsApp
                   </a>
                   <a
                     href="#products"
-                    className="inline-flex items-center justify-center gap-2 border-2 border-orange-700 text-orange-700 font-bold px-8 py-4 rounded-2xl text-lg hover:bg-orange-700 hover:text-white transition-all"
+                    className="inline-flex items-center justify-center gap-2 border-2 border-orange-700 text-orange-700 font-extrabold px-8 py-4 rounded-2xl text-[17px] hover:bg-orange-700 hover:text-white transition-all"
                   >
                     Lihat Produk Kami
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2.5}
-                        d="M19 9l-7 7-7-7"
-                      />
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
                     </svg>
                   </a>
                 </div>
 
                 {/* Trust badges */}
-                <div className="mt-10 flex flex-wrap gap-3">
+                <div className="mt-9 flex flex-wrap gap-3">
                   {[
                     { icon: "🏆", text: "P-IRT Certified" },
                     { icon: "🇮🇩", text: "Melayani Seluruh Indonesia" },
                     { icon: "⚡", text: "Proses 3–7 Hari Kerja" },
+                    { icon: "🔒", text: "Garansi Kualitas" },
                   ].map((b) => (
                     <span
                       key={b.text}
@@ -341,9 +471,9 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* ── Right ── */}
+              {/* ── Right image ── */}
               <div className="relative hero-fadein-right">
-                <div className="relative h-[480px] lg:h-[580px] rounded-3xl overflow-hidden shadow-2xl">
+                <div className="relative h-[470px] lg:h-[560px] rounded-3xl overflow-hidden shadow-2xl">
                   <Image
                     src={fotoAwalHeroImg}
                     alt="Produk freeze dried Raja Freeze Dried Food"
@@ -353,28 +483,18 @@ export default function Home() {
                     sizes="(min-width: 1024px) 50vw, 100vw"
                     className="object-cover hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent" />
 
-                  {/* Overlay card */}
-                  <div className="absolute bottom-6 left-6 bg-white/96 backdrop-blur-sm rounded-2xl px-5 py-4 shadow-xl">
-                    <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">
-                      Sertifikasi Resmi
-                    </p>
-                    <p className="text-gray-900 font-extrabold text-lg mt-0.5">
-                      P-IRT Certified ✓
-                    </p>
+                  {/* Overlay badge bottom-left */}
+                  <div className="absolute bottom-5 left-5 bg-white/96 backdrop-blur-sm rounded-2xl px-5 py-3.5 shadow-xl">
+                    <p className="text-[10px] font-extrabold text-gray-400 uppercase tracking-widest">Sertifikasi Resmi</p>
+                    <p className="text-gray-900 font-extrabold text-lg mt-0.5">P-IRT Certified ✓</p>
                   </div>
 
-                  {/* Floating stat */}
-                  <div className="absolute top-6 right-6 bg-orange-700 text-white rounded-2xl px-5 py-4 shadow-xl text-center">
-                    <p
-                      className={`text-3xl font-black ${playfair.className}`}
-                    >
-                      25
-                    </p>
-                    <p className="text-xs font-semibold text-orange-200 mt-0.5">
-                      Tahun Tahan
-                    </p>
+                  {/* Floating stat top-right */}
+                  <div className="absolute top-5 right-5 bg-orange-700 text-white rounded-2xl px-5 py-4 shadow-xl text-center">
+                    <p className={`text-3xl font-black leading-none ${playfair.className}`}>25</p>
+                    <p className="text-[11px] font-bold text-orange-200 mt-1">Tahun Tahan</p>
                   </div>
                 </div>
 
@@ -391,22 +511,16 @@ export default function Home() {
         ══════════════════════════════════════════════ */}
         <section ref={statsRef} className="bg-gray-900 py-14">
           <div className="max-w-6xl mx-auto px-4">
-            <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-gray-700">
+            <div className="grid grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-gray-700/60">
               {[
                 { val: c500, suf: "+", label: "Pelanggan Puas", sub: "di seluruh Indonesia" },
                 { val: c25, suf: " thn", label: "Ketahanan Produk", sub: "tanpa bahan pengawet" },
-                { val: c3, suf: " hari", label: "Proses Minimal", sub: "tergantung volume" },
+                { val: c3, suf: " hari", label: "Proses Minimal", sub: "tergantung volume & jenis" },
                 { val: c100, suf: "%", label: "Tanpa Pengawet", sub: "100% alami murni" },
               ].map((s, i) => (
-                <div
-                  key={i}
-                  className="text-center px-6 py-4 first:pl-0 last:pr-0"
-                >
-                  <div
-                    className={`text-5xl font-black text-orange-500 tabular-nums ${playfair.className}`}
-                  >
-                    {s.val}
-                    {s.suf}
+                <div key={i} className="text-center px-6 py-8">
+                  <div className={`text-5xl font-black text-orange-500 tabular-nums ${playfair.className}`}>
+                    {s.val}{s.suf}
                   </div>
                   <div className="mt-2 text-white font-bold text-base">{s.label}</div>
                   <div className="mt-1 text-gray-500 text-sm">{s.sub}</div>
@@ -422,61 +536,42 @@ export default function Home() {
         <section className="py-24 bg-orange-50">
           <div
             ref={howRef.ref}
-            className={`max-w-7xl mx-auto px-4 transition-all duration-700 ease-out ${
-              howRef.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-            }`}
+            className={`max-w-7xl mx-auto px-4 section-reveal ${howRef.visible ? "revealed" : ""}`}
           >
             <SectionHeading
               title="Cara Kerja Jasa Kami"
-              subtitle="4 langkah mudah — dari konsultasi hingga produk tiba di tangan Anda"
+              subtitle="4 langkah mudah — dari konsultasi hingga produk jadi tiba di tangan Anda"
             />
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
-              {/* Connector line desktop */}
-              <div className="hidden lg:block absolute top-[3.25rem] left-[calc(12.5%+2rem)] right-[calc(12.5%+2rem)] h-0.5 bg-gradient-to-r from-orange-300 via-orange-400 to-orange-300 z-0" />
+              {/* Connector line (desktop) */}
+              <div className="hidden lg:block absolute top-[3.25rem] left-[calc(12.5%+2rem)] right-[calc(12.5%+2rem)] h-px bg-gradient-to-r from-orange-200 via-orange-400 to-orange-200 z-0" />
 
               {[
                 {
-                  num: "01",
-                  icon: "💬",
-                  title: "Hubungi Kami",
+                  num: "01", icon: "💬", title: "Hubungi Kami",
                   desc: "Chat via WhatsApp, ceritakan bahan & kebutuhan Anda. Konsultasi gratis, tanpa komitmen.",
                 },
                 {
-                  num: "02",
-                  icon: "📦",
-                  title: "Kirim Bahan",
+                  num: "02", icon: "📦", title: "Kirim Bahan",
                   desc: "Kirim bahan segar ke fasilitas kami di Jakarta. Kami terima dari seluruh Indonesia.",
                 },
                 {
-                  num: "03",
-                  icon: "❄️",
-                  title: "Proses Freeze Dry",
+                  num: "03", icon: "❄️", title: "Proses Freeze Dry",
                   desc: "Bahan diproses dengan mesin vacuum freeze dryer berstandar industri selama 3–7 hari.",
                 },
                 {
-                  num: "04",
-                  icon: "🎁",
-                  title: "Terima Produk Jadi",
+                  num: "04", icon: "🎁", title: "Terima Produk Jadi",
                   desc: "Produk dikemas vakum dan dikirim kembali ke Anda dalam kondisi sempurna.",
                 },
               ].map((step, i) => (
-                <div
-                  key={i}
-                  className="relative z-10 flex flex-col items-center text-center group"
-                >
+                <div key={i} className="relative z-10 flex flex-col items-center text-center group">
                   <div className="w-28 h-28 bg-white rounded-full flex flex-col items-center justify-center shadow-md border-4 border-orange-100 group-hover:border-orange-500 group-hover:shadow-orange-200 group-hover:shadow-xl transition-all duration-300 mb-6">
                     <span className="text-3xl">{step.icon}</span>
-                    <span className="text-[10px] font-extrabold text-orange-600 tracking-[0.15em] mt-1">
-                      STEP {step.num}
-                    </span>
+                    <span className="text-[10px] font-extrabold text-orange-600 tracking-[0.12em] mt-1.5">STEP {step.num}</span>
                   </div>
-                  <h3 className="text-xl font-extrabold text-gray-900 mb-3">
-                    {step.title}
-                  </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed max-w-[200px]">
-                    {step.desc}
-                  </p>
+                  <h3 className="text-xl font-extrabold text-gray-900 mb-3">{step.title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed max-w-[200px]">{step.desc}</p>
                 </div>
               ))}
             </div>
@@ -486,7 +581,7 @@ export default function Home() {
                 href={WA_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-orange-700 text-white font-bold px-9 py-4 rounded-2xl text-lg hover:bg-orange-800 transition-all shadow-lg shadow-orange-700/30 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-3 bg-orange-700 text-white font-extrabold px-9 py-4 rounded-2xl text-lg hover:bg-orange-800 transition-all shadow-lg shadow-orange-700/30 hover:-translate-y-0.5"
               >
                 <WhatsAppIcon className="w-5 h-5" />
                 Mulai Konsultasi Sekarang
@@ -501,9 +596,7 @@ export default function Home() {
         <section className="py-24 bg-white">
           <div
             ref={whyRef.ref}
-            className={`max-w-7xl mx-auto px-4 transition-all duration-700 ease-out ${
-              whyRef.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-            }`}
+            className={`max-w-7xl mx-auto px-4 section-reveal ${whyRef.visible ? "revealed" : ""}`}
           >
             <SectionHeading
               title="Mengapa Freeze Drying?"
@@ -516,7 +609,7 @@ export default function Home() {
                   icon: "🧬",
                   title: "Nutrisi Terjaga 95%",
                   badge: "vs. konvensional hanya 40%",
-                  desc: "Proses sublimasi (beku → gas) tidak merusak sel. Vitamin, mineral, dan enzim tetap utuh — nutrisi hampir sama dengan buah segar.",
+                  desc: "Proses sublimasi (beku → gas) tidak merusak sel. Vitamin, mineral, dan enzim tetap utuh — nutrisi hampir sama dengan bahan segar.",
                   bg: "from-orange-50 to-amber-50",
                   border: "border-orange-200",
                   accent: "text-orange-700",
@@ -525,7 +618,7 @@ export default function Home() {
                   icon: "⏳",
                   title: "Tahan Hingga 25 Tahun",
                   badge: "tanpa bahan pengawet kimia",
-                  desc: "Kadar air diturunkan hingga <2%. Tidak ada ruang bagi bakteri dan jamur untuk berkembang biak.",
+                  desc: "Kadar air diturunkan hingga <2%. Tidak ada ruang bagi bakteri dan jamur untuk berkembang biak — alami dan aman.",
                   bg: "from-amber-50 to-yellow-50",
                   border: "border-amber-200",
                   accent: "text-amber-700",
@@ -534,7 +627,7 @@ export default function Home() {
                   icon: "⚖️",
                   title: "Berat Berkurang 90%",
                   badge: "hemat ongkir & biaya storage",
-                  desc: "Produk jauh lebih ringan dan ringkas. Logistik lebih efisien, biaya gudang turun drastis, dan margin bisnis Anda meningkat.",
+                  desc: "Produk jauh lebih ringan dan ringkas. Logistik lebih efisien, biaya gudang turun drastis, margin bisnis meningkat signifikan.",
                   bg: "from-stone-50 to-gray-50",
                   border: "border-stone-200",
                   accent: "text-stone-700",
@@ -545,19 +638,201 @@ export default function Home() {
                   className={`bg-gradient-to-br ${c.bg} border ${c.border} rounded-3xl p-9 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300`}
                 >
                   <div className="text-5xl mb-5">{c.icon}</div>
-                  <h3
-                    className={`text-2xl font-black text-gray-900 mb-2 ${playfair.className}`}
-                  >
-                    {c.title}
-                  </h3>
-                  <p className={`text-sm font-bold mb-4 ${c.accent}`}>
-                    {c.badge}
-                  </p>
-                  <p className="text-gray-600 leading-relaxed text-[15px]">
-                    {c.desc}
-                  </p>
+                  <h3 className={`text-2xl font-black text-gray-900 mb-2 ${playfair.className}`}>{c.title}</h3>
+                  <p className={`text-sm font-bold mb-4 ${c.accent}`}>{c.badge}</p>
+                  <p className="text-gray-600 leading-relaxed text-[15px]">{c.desc}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════════════════
+            COMPARISON TABLE
+        ══════════════════════════════════════════════ */}
+        <section className="py-24 bg-gray-50">
+          <div
+            ref={compRef.ref}
+            className={`max-w-6xl mx-auto px-4 section-reveal ${compRef.visible ? "revealed" : ""}`}
+          >
+            <SectionHeading
+              title="Freeze Drying vs Metode Lain"
+              subtitle="Lihat sendiri mengapa freeze drying adalah standar tertinggi pengawetan makanan"
+            />
+
+            {/* Mobile: cards */}
+            <div className="block md:hidden space-y-6">
+              {comparisonRows.map((row, i) => (
+                <div key={i} className="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
+                  <div className="bg-gray-800 text-white px-5 py-3 font-bold text-sm">{row.label}</div>
+                  <div className="divide-y divide-gray-100">
+                    <div className="flex items-center justify-between px-5 py-3 bg-orange-50">
+                      <span className="text-sm font-bold text-orange-800">❄️ Freeze Drying</span>
+                      <span className="text-sm font-extrabold text-orange-700">{row.fd}</span>
+                    </div>
+                    <div className="flex items-center justify-between px-5 py-3">
+                      <span className="text-sm text-gray-600">🔥 Oven/Dehidrator</span>
+                      <span className="text-sm text-gray-500">{row.oven}</span>
+                    </div>
+                    <div className="flex items-center justify-between px-5 py-3">
+                      <span className="text-sm text-gray-600">☀️ Matahari</span>
+                      <span className="text-sm text-gray-500">{row.matahari}</span>
+                    </div>
+                    <div className="flex items-center justify-between px-5 py-3">
+                      <span className="text-sm text-gray-600">🥫 Pengalengan</span>
+                      <span className="text-sm text-gray-500">{row.pengalengan}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop: table */}
+            <div className="hidden md:block overflow-hidden rounded-3xl border border-gray-200 shadow-lg">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr>
+                    <th className="bg-gray-800 text-white text-left px-6 py-5 font-bold w-[22%]">Aspek</th>
+                    <th className="bg-orange-700 text-white px-6 py-5 font-extrabold text-center">
+                      <div className="flex flex-col items-center gap-1">
+                        <span className="text-lg">❄️</span>
+                        <span>Freeze Drying</span>
+                        <span className="text-orange-200 text-xs font-medium">(Raja FD)</span>
+                      </div>
+                    </th>
+                    <th className="bg-gray-100 text-gray-600 px-6 py-5 font-semibold text-center">
+                      <div className="flex flex-col items-center gap-1">
+                        <span className="text-lg">🔥</span>
+                        <span>Oven / Dehidrator</span>
+                      </div>
+                    </th>
+                    <th className="bg-gray-100 text-gray-600 px-6 py-5 font-semibold text-center">
+                      <div className="flex flex-col items-center gap-1">
+                        <span className="text-lg">☀️</span>
+                        <span>Matahari</span>
+                      </div>
+                    </th>
+                    <th className="bg-gray-100 text-gray-600 px-6 py-5 font-semibold text-center rounded-tr-3xl">
+                      <div className="flex flex-col items-center gap-1">
+                        <span className="text-lg">🥫</span>
+                        <span>Pengalengan</span>
+                      </div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {comparisonRows.map((row, i) => (
+                    <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50/70"}>
+                      <td className="px-6 py-4 font-semibold text-gray-800 border-r border-gray-100">{row.label}</td>
+                      <td className="px-6 py-4 text-center bg-orange-50 border-r border-orange-100">
+                        <span className="inline-flex items-center gap-1.5 font-extrabold text-orange-700">
+                          <svg className="w-4 h-4 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                          {row.fd}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 text-center text-gray-500 border-r border-gray-100">{row.oven}</td>
+                      <td className="px-6 py-4 text-center text-gray-500 border-r border-gray-100">{row.matahari}</td>
+                      <td className="px-6 py-4 text-center text-gray-500">{row.pengalengan}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="mt-10 text-center">
+              <p className="text-gray-500 text-sm mb-5">
+                Sudah jelas kan perbedaannya? Jadikan produk Anda dengan standar tertinggi.
+              </p>
+              <a
+                href={WA_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-orange-700 text-white font-extrabold px-9 py-4 rounded-2xl text-lg hover:bg-orange-800 transition-all shadow-lg shadow-orange-700/30 hover:-translate-y-0.5"
+              >
+                <WhatsAppIcon className="w-5 h-5" />
+                Hubungi Kami Sekarang
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════════════════
+            JASA MAKLOON HIGHLIGHT
+        ══════════════════════════════════════════════ */}
+        <section className="py-20 bg-white">
+          <div
+            ref={jasaRef.ref}
+            className={`max-w-6xl mx-auto px-4 section-reveal ${jasaRef.visible ? "revealed" : ""}`}
+          >
+            <div className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-[2rem] p-8 md:p-14">
+              {/* Decorative elements */}
+              <div className="absolute top-0 right-0 w-72 h-72 bg-orange-600 rounded-full opacity-10 blur-3xl pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-56 h-56 bg-orange-500 rounded-full opacity-10 blur-3xl pointer-events-none" />
+
+              <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                <div>
+                  <div className="inline-flex items-center gap-2 bg-orange-700/30 text-orange-400 text-xs font-extrabold px-4 py-2 rounded-full mb-6 border border-orange-700/40 uppercase tracking-wider">
+                    ⭐ Layanan Unggulan
+                  </div>
+                  <h3 className={`text-3xl md:text-4xl font-black text-white leading-tight ${playfair.className}`}>
+                    Jasa Makloon
+                    <span className="block text-orange-500">Freeze Drying Custom</span>
+                  </h3>
+                  <p className="mt-5 text-gray-400 text-[15px] leading-relaxed">
+                    Punya bahan makanan lokal yang ingin dijadikan produk premium? Kami siap menjadi mitra produksi Anda.
+                    Kirim bahan, kami proses, Anda terima produk jadi siap jual.
+                  </p>
+                  <ul className="mt-6 space-y-3">
+                    {[
+                      "Cocok untuk UMKM, brand snack, oleh-oleh daerah",
+                      "Minimum order 5 kg bahan segar",
+                      "Pengemasan vakum profesional",
+                      "Konsultasi gratis sebelum order",
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start gap-3 text-gray-300 text-sm">
+                        <svg className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-8 flex flex-col sm:flex-row gap-4">
+                    <a
+                      href={WA_LINK}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-3 bg-green-600 text-white font-extrabold px-7 py-4 rounded-2xl hover:bg-green-700 transition-all shadow-lg shadow-green-900/40"
+                    >
+                      <WhatsAppIcon className="w-5 h-5" />
+                      Diskusi Kebutuhan Saya
+                    </a>
+                    <a
+                      href="#products"
+                      className="inline-flex items-center justify-center gap-2 border border-gray-600 text-gray-300 font-semibold px-7 py-4 rounded-2xl hover:border-orange-600 hover:text-orange-400 transition-all text-sm"
+                    >
+                      Lihat Contoh Produk →
+                    </a>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  {[
+                    { icon: "🌺", label: "Buah Tropis", sub: "Durian, mangga, dll" },
+                    { icon: "🥬", label: "Sayuran", sub: "Bayam, wortel, dll" },
+                    { icon: "🍖", label: "Daging & Seafood", sub: "Custom order" },
+                    { icon: "🌸", label: "Bunga & Herbal", sub: "Untuk produk premium" },
+                  ].map((item, i) => (
+                    <div key={i} className="bg-gray-800/60 border border-gray-700 rounded-2xl p-5 text-center hover:border-orange-600/50 transition-colors">
+                      <div className="text-3xl mb-2">{item.icon}</div>
+                      <p className="text-white font-bold text-sm">{item.label}</p>
+                      <p className="text-gray-500 text-xs mt-1">{item.sub}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -568,22 +843,18 @@ export default function Home() {
         <section id="products" className="py-24 bg-gray-50">
           <div
             ref={productsRef.ref}
-            className={`max-w-7xl mx-auto px-4 transition-all duration-700 ease-out ${
-              productsRef.visible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
-            }`}
+            className={`max-w-7xl mx-auto px-4 section-reveal ${productsRef.visible ? "revealed" : ""}`}
           >
             <SectionHeading
               title="Produk Unggulan Kami"
-              subtitle="Setiap produk diproses dengan teknologi freeze dry premium — tanpa bahan pengawet, nutrisi terjaga"
+              subtitle="Setiap produk diproses dengan teknologi freeze dry premium — tanpa pengawet, nutrisi terjaga"
             />
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {products.map((p) => (
                 <article
                   key={p.name}
-                  className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group flex flex-col border border-gray-100"
+                  className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-orange-900/10 hover:-translate-y-2 transition-all duration-300 group flex flex-col border border-gray-100"
                 >
                   <div className="relative h-56 overflow-hidden">
                     <Image
@@ -594,94 +865,109 @@ export default function Home() {
                       sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-white/90 text-orange-700 text-xs font-extrabold px-3 py-1.5 rounded-full border border-orange-200">
+                        {p.tag}
+                      </span>
+                    </div>
                     <div className="absolute bottom-4 left-4">
-                      <span className="bg-orange-700 text-white text-xs font-extrabold px-3 py-1.5 rounded-full tracking-wide">
+                      <span className="bg-orange-700 text-white text-xs font-extrabold px-3 py-1.5 rounded-full">
                         FREEZE DRIED
                       </span>
                     </div>
                   </div>
 
                   <div className="p-6 flex-grow flex flex-col">
-                    <h3
-                      className={`text-2xl font-black text-gray-900 ${playfair.className}`}
-                    >
-                      {p.name}
-                    </h3>
-                    <p className="mt-3 text-gray-500 text-sm leading-relaxed flex-grow">
-                      {p.description}
-                    </p>
+                    <h3 className={`text-2xl font-black text-gray-900 ${playfair.className}`}>{p.name}</h3>
+                    <p className="mt-3 text-gray-500 text-sm leading-relaxed flex-grow">{p.description}</p>
 
-                    <a
-                      href="https://www.tokopedia.com/eenkfreeze"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-5 w-full flex items-center justify-center gap-2 bg-green-600 text-white py-3.5 px-4 rounded-xl font-bold hover:bg-green-700 transition-colors"
-                    >
-                      <Image
-                        src={tokpedIcon}
-                        alt=""
-                        aria-hidden
-                        width={20}
-                        height={20}
-                      />
-                      Beli di Tokopedia
-                    </a>
+                    <div className="mt-5 grid grid-cols-1 gap-3">
+                      <a
+                        href="https://www.tokopedia.com/eenkfreeze"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full flex items-center justify-center gap-2 bg-green-600 text-white py-3.5 px-4 rounded-xl font-bold hover:bg-green-700 transition-colors"
+                      >
+                        <Image src={tokpedIcon} alt="" aria-hidden width={20} height={20} />
+                        Beli di Tokopedia
+                      </a>
+                    </div>
                   </div>
                 </article>
               ))}
+            </div>
+
+            {/* CTA below products */}
+            <div className="mt-12 text-center">
+              <div className="inline-flex flex-col sm:flex-row items-center gap-4 bg-orange-50 border border-orange-200 rounded-2xl px-8 py-6">
+                <p className="text-gray-700 font-semibold">
+                  Mau produk buah atau bahan lain yang di-freeze dry khusus untuk brand Anda?
+                </p>
+                <a
+                  href={WA_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-shrink-0 inline-flex items-center gap-2 bg-orange-700 text-white font-bold px-6 py-3 rounded-xl hover:bg-orange-800 transition-colors text-sm"
+                >
+                  <WhatsAppIcon className="w-4 h-4" />
+                  Order Custom
+                </a>
+              </div>
             </div>
           </div>
         </section>
 
         {/* ══════════════════════════════════════════════
-            GALLERY / PROSES
+            GALLERY
         ══════════════════════════════════════════════ */}
         <section className="py-24 bg-white">
           <div
             ref={galleryRef.ref}
-            className={`max-w-7xl mx-auto px-4 transition-all duration-700 ease-out ${
-              galleryRef.visible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
-            }`}
+            className={`max-w-7xl mx-auto px-4 section-reveal ${galleryRef.visible ? "revealed" : ""}`}
           >
             <SectionHeading
-              title="Fasilitas & Proses Kami"
-              subtitle="Mesin freeze dryer berstandar industri, kebersihan terjamin"
+              title="Fasilitas &amp; Proses Kami"
+              subtitle="Mesin freeze dryer berstandar industri, kebersihan terjamin di setiap tahap"
             />
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[180px]">
               {galleryImages.map((img, i) => (
                 <div
                   key={i}
-                  className={`relative overflow-hidden rounded-2xl ${
-                    i === 0 ? "col-span-2 row-span-2 h-80 lg:h-auto" : "h-40 lg:h-52"
-                  } group cursor-pointer`}
+                  className={`relative overflow-hidden rounded-2xl group cursor-pointer ${
+                    i === 0 ? "col-span-2 row-span-2" : ""
+                  }`}
                 >
                   <Image
                     src={img}
-                    alt={`Gallery foto proses freeze drying ${i + 1}`}
+                    alt={`Gallery proses freeze drying ${i + 1}`}
                     fill
                     placeholder="blur"
                     sizes="(min-width: 1024px) 25vw, 50vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover group-hover:scale-107 transition-transform duration-500"
+                    style={{ transform: "scale(1)" }}
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
+                  {i === 0 && (
+                    <div className="absolute bottom-5 left-5 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2">
+                      <p className="text-gray-900 font-bold text-sm">Mesin Freeze Dryer Industri</p>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
 
-            <div className="mt-10 text-center">
+            <div className="mt-8 text-center">
               <p className="text-gray-500 text-sm">
-                Ingin melihat lebih banyak proses?{" "}
+                Ingin melihat lebih banyak proses produksi kami?{" "}
                 <a
                   href="https://www.tiktok.com/@freezedriedindonesia"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-orange-700 font-bold hover:underline"
                 >
-                  Kunjungi TikTok kami @freezedriedindonesia
+                  Kunjungi TikTok @freezedriedindonesia →
                 </a>
               </p>
             </div>
@@ -694,11 +980,7 @@ export default function Home() {
         <section className="py-24 bg-gray-900">
           <div
             ref={testimonialsRef.ref}
-            className={`max-w-7xl mx-auto px-4 transition-all duration-700 ease-out ${
-              testimonialsRef.visible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
-            }`}
+            className={`max-w-7xl mx-auto px-4 section-reveal ${testimonialsRef.visible ? "revealed" : ""}`}
           >
             <SectionHeading
               title="Kata Pelanggan Kami"
@@ -712,46 +994,35 @@ export default function Home() {
                   key={i}
                   className="bg-gray-800 rounded-3xl p-8 border border-gray-700 hover:border-orange-600/60 hover:shadow-2xl hover:shadow-orange-900/20 transition-all duration-300 flex flex-col"
                 >
-                  {/* Stars */}
-                  <div className="flex gap-1 mb-5">
-                    {Array.from({ length: 5 }).map((_, j) => (
-                      <svg
-                        key={j}
-                        className="w-5 h-5 text-orange-500"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    ))}
-                  </div>
+                  <StarRating count={t.rating} />
 
-                  {/* Quote icon */}
-                  <svg
-                    className="w-8 h-8 text-orange-700/40 mb-3 flex-shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
+                  <svg className="w-7 h-7 text-orange-700/40 mt-4 mb-3 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                   </svg>
 
-                  <p className="text-gray-300 leading-relaxed flex-grow italic text-[15px]">
-                    {t.quote}
-                  </p>
+                  <p className="text-gray-300 leading-relaxed flex-grow italic text-[15px]">{t.quote}</p>
 
-                  <div className="flex items-center gap-4 mt-6 pt-6 border-t border-gray-700">
+                  <div className="flex items-center gap-4 mt-6 pt-6 border-t border-gray-700/60">
                     <div className="w-12 h-12 bg-gradient-to-br from-orange-600 to-orange-800 rounded-full flex items-center justify-center text-white font-extrabold text-sm flex-shrink-0">
                       {t.initials}
                     </div>
                     <div>
                       <p className="text-white font-bold">{t.name}</p>
-                      <p className="text-gray-400 text-sm">
-                        {t.business} · {t.city}
-                      </p>
+                      <p className="text-gray-400 text-sm">{t.business} · {t.city}</p>
                     </div>
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Aggregate rating */}
+            <div className="mt-12 text-center">
+              <div className="inline-flex flex-col sm:flex-row items-center gap-4 bg-gray-800/60 border border-gray-700 rounded-2xl px-8 py-5">
+                <StarRating count={5} />
+                <p className="text-white font-semibold text-sm">
+                  <span className="text-orange-500 font-extrabold">5.0 / 5.0</span> rata-rata rating dari 500+ pelanggan
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -762,9 +1033,7 @@ export default function Home() {
         <section className="py-24 bg-white">
           <div
             ref={faqRef.ref}
-            className={`max-w-3xl mx-auto px-4 transition-all duration-700 ease-out ${
-              faqRef.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-            }`}
+            className={`max-w-3xl mx-auto px-4 section-reveal ${faqRef.visible ? "revealed" : ""}`}
           >
             <SectionHeading
               title="Pertanyaan Umum"
@@ -779,15 +1048,15 @@ export default function Home() {
                 >
                   <button
                     onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                    className="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-orange-50/60 transition-colors"
+                    className="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-orange-50/50 transition-colors"
                     aria-expanded={openFaq === i}
                   >
-                    <span className="font-bold text-gray-900 pr-4 text-[15px] leading-snug">
-                      {faq.q}
-                    </span>
+                    <span className="font-bold text-gray-900 pr-4 text-[15px] leading-snug">{faq.q}</span>
                     <span
-                      className={`flex-shrink-0 w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center text-orange-700 font-black text-lg transition-transform duration-300 ${
-                        openFaq === i ? "rotate-45 bg-orange-700 text-white" : ""
+                      className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center font-black text-xl transition-all duration-300 ${
+                        openFaq === i
+                          ? "bg-orange-700 text-white rotate-45"
+                          : "bg-orange-100 text-orange-700"
                       }`}
                     >
                       +
@@ -796,12 +1065,10 @@ export default function Home() {
 
                   <div
                     className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                      openFaq === i ? "max-h-56" : "max-h-0"
+                      openFaq === i ? "max-h-64" : "max-h-0"
                     }`}
                   >
-                    <p className="px-6 pb-6 text-gray-500 leading-relaxed text-[15px]">
-                      {faq.a}
-                    </p>
+                    <p className="px-6 pb-6 text-gray-500 leading-relaxed text-[15px]">{faq.a}</p>
                   </div>
                 </div>
               ))}
@@ -810,12 +1077,7 @@ export default function Home() {
             <div className="mt-10 text-center">
               <p className="text-gray-500 text-sm">
                 Masih ada pertanyaan lain?{" "}
-                <a
-                  href={WA_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-orange-700 font-bold hover:underline"
-                >
+                <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="text-orange-700 font-bold hover:underline">
                   Tanya langsung via WhatsApp →
                 </a>
               </p>
@@ -827,29 +1089,25 @@ export default function Home() {
             FINAL CTA
         ══════════════════════════════════════════════ */}
         <section className="py-28 bg-gray-900 relative overflow-hidden">
-          {/* Background texture blobs */}
-          <div className="absolute -top-32 -left-32 w-96 h-96 bg-orange-700 rounded-full opacity-10 blur-3xl" />
-          <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-orange-500 rounded-full opacity-10 blur-3xl" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-orange-900/30 rounded-full opacity-40 pointer-events-none" />
+          <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-orange-700 rounded-full opacity-[0.07] blur-3xl" />
+          <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-orange-500 rounded-full opacity-[0.07] blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] border border-orange-900/25 rounded-full opacity-50 pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] border border-orange-900/20 rounded-full opacity-40 pointer-events-none" />
 
           <div className="relative max-w-4xl mx-auto px-4 text-center">
             <div className="inline-flex items-center gap-2 bg-orange-900/40 text-orange-400 text-sm font-bold px-4 py-2 rounded-full mb-8 border border-orange-800/50">
               <span className="w-2 h-2 bg-orange-500 rounded-full animate-pulse" />
-              Konsultasi Gratis · Tanpa Komitmen
+              Konsultasi Gratis · Respons &lt; 1 Jam
             </div>
 
-            <h2
-              className={`text-5xl md:text-6xl font-black text-white leading-tight ${playfair.className}`}
-            >
+            <h2 className={`text-5xl md:text-6xl font-black text-white leading-tight ${playfair.className}`}>
               Siap Mulai?
-              <span className="block text-orange-500">
-                Konsultasi Gratis Sekarang
-              </span>
+              <span className="block text-orange-500">Konsultasi Gratis Sekarang</span>
             </h2>
 
             <p className="mt-6 text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-              Tim kami siap membantu Anda menemukan solusi freeze drying terbaik
-              untuk bisnis Anda. Respons cepat, tidak ada biaya konsultasi.
+              Tim kami siap membantu Anda menemukan solusi freeze drying terbaik untuk bisnis Anda.
+              Tidak ada biaya konsultasi, tidak ada tekanan.
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
@@ -862,7 +1120,6 @@ export default function Home() {
                 <WhatsAppIcon className="w-6 h-6" />
                 Chat WhatsApp Sekarang
               </a>
-
               <a
                 href="mailto:info@rajafreezdriedfood.com"
                 className="inline-flex items-center justify-center gap-3 border-2 border-gray-600 text-gray-300 font-bold px-10 py-5 rounded-2xl text-lg hover:border-orange-600 hover:text-orange-500 transition-all"
@@ -872,11 +1129,8 @@ export default function Home() {
             </div>
 
             <p className="mt-10 text-gray-600 text-sm">
-              📍 Jakarta, Indonesia · ☎️ +62 821-2498-5339 ·{" "}
-              <a
-                href="mailto:info@rajafreezdriedfood.com"
-                className="hover:text-gray-400 transition-colors"
-              >
+              📍 Jakarta, Indonesia &nbsp;·&nbsp; ☎️ +62 821-2498-5339 &nbsp;·&nbsp;
+              <a href="mailto:info@rajafreezdriedfood.com" className="hover:text-gray-400 transition-colors">
                 info@rajafreezdriedfood.com
               </a>
             </p>
@@ -886,6 +1140,36 @@ export default function Home() {
 
       <Footer />
       <FloatingWidgetsWrapper />
+
+      {/* ══════════════════════════════════════════════
+          MOBILE STICKY CTA BAR
+      ══════════════════════════════════════════════ */}
+      <div
+        className={`fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white border-t border-gray-200 shadow-2xl transition-transform duration-300 ${
+          scrolled ? "translate-y-0" : "translate-y-full"
+        }`}
+      >
+        <div className="flex gap-3 p-3 pb-safe">
+          <a
+            href={WA_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 flex items-center justify-center gap-2 bg-green-600 text-white font-extrabold py-3.5 rounded-xl text-sm hover:bg-green-700 transition-colors"
+          >
+            <WhatsAppIcon className="w-4 h-4" />
+            Chat WhatsApp
+          </a>
+          <a
+            href="https://www.tokopedia.com/eenkfreeze"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 flex items-center justify-center gap-2 bg-orange-700 text-white font-extrabold py-3.5 rounded-xl text-sm hover:bg-orange-800 transition-colors"
+          >
+            <Image src={tokpedIcon} alt="" aria-hidden width={16} height={16} />
+            Tokopedia
+          </a>
+        </div>
+      </div>
     </div>
   );
 }

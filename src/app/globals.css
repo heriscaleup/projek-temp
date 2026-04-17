@@ -50,7 +50,29 @@ body {
   animation: fadeInRight 0.8s ease-out 0.15s both;
 }
 
+/* ─── Section scroll reveal ─── */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+}
+
+.section-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ─── Smooth scroll ─── */
 html {
   scroll-behavior: smooth;
+}
+
+/* ─── Safe area padding for mobile sticky bar ─── */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ─── Gallery image scale utility ─── */
+.scale-107 {
+  transform: scale(1.07);
 }
