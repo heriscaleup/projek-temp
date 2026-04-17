@@ -13,9 +13,4 @@ const nextConfig: NextConfig = {
   typescript: { ignoreBuildErrors: true },
 };
 
-const withExport = {
-  ...nextConfig,
-  output: 'export',
-};
-
-export default withExport;
+export default nextConfig;
