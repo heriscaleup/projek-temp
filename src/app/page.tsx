@@ -20,6 +20,15 @@ import slider2Img from "@/assets/images/slider2.webp";
 import slider3Img from "@/assets/images/slider3.webp";
 import tokpedIcon from "@/assets/images/tokped.svg";
 
+// New rich photo assets
+import driedFruitPlateImg from "@/assets/images/dried_fruit_1.jpg";
+import freezeDriedStrawberriesImg from "@/assets/images/freeze_dried_strawberries.jpg";
+import processGridImg from "@/assets/images/fruit_image_03.png";
+import machineBeforeAfterImg from "@/assets/images/fruit_composite_02.png";
+import beforeAfterComparisonImg from "@/assets/images/fruit_image_05.png";
+import beforeDuringAfterImg from "@/assets/images/fruit_image_08.png";
+import fullInfographicImg from "@/assets/images/fruit_composite_01.png";
+
 // Fonts
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -139,7 +148,12 @@ const faqs = [
   },
 ];
 
-const galleryImages = [slider1Img, slider2Img, slider3Img, fotoAwalHeroImg];
+const galleryImages = [
+  { src: driedFruitPlateImg,          alt: "Aneka buah freeze dried di piring", span: true },
+  { src: freezeDriedStrawberriesImg,  alt: "Stroberi freeze dried close-up",     span: false },
+  { src: processGridImg,              alt: "Proses freeze drying buah segar",     span: false },
+  { src: machineBeforeAfterImg,       alt: "Mesin freeze dryer before & after",   span: false },
+];
 
 // Comparison data
 const comparisonRows = [
@@ -576,7 +590,24 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="mt-14 text-center">
+            {/* Visual: Before / During / After */}
+            <div className="mt-14 rounded-3xl overflow-hidden border border-orange-200 shadow-lg">
+              <div className="bg-orange-700 px-6 py-3 flex items-center gap-3">
+                <span className="text-white text-lg">❄️</span>
+                <p className="text-white font-bold text-sm">Visualisasi Proses: Bahan Segar → Mesin → Produk Jadi</p>
+              </div>
+              <div className="relative w-full bg-white" style={{ aspectRatio: "3/4", maxHeight: "560px" }}>
+                <Image
+                  src={beforeDuringAfterImg}
+                  alt="Proses freeze drying: sebelum, selama, dan sesudah — buah, sayur, dan liquid"
+                  fill
+                  sizes="(min-width: 768px) 80vw, 100vw"
+                  className="object-contain"
+                />
+              </div>
+            </div>
+
+            <div className="mt-10 text-center">
               <a
                 href={WA_LINK}
                 target="_blank"
@@ -643,6 +674,23 @@ export default function Home() {
                   <p className="text-gray-600 leading-relaxed text-[15px]">{c.desc}</p>
                 </div>
               ))}
+            </div>
+
+            {/* Before & After visual */}
+            <div className="mt-16 rounded-3xl overflow-hidden shadow-xl border border-gray-100">
+              <div className="bg-gray-800 px-6 py-4 flex items-center gap-3">
+                <span className="text-orange-500 text-lg">📊</span>
+                <p className="text-white font-bold">Lihat Sendiri Perbedaannya — Before &amp; After Freeze Drying</p>
+              </div>
+              <div className="relative w-full" style={{ aspectRatio: "3/4", maxHeight: "600px" }}>
+                <Image
+                  src={beforeAfterComparisonImg}
+                  alt="Before and after freeze drying comparison — buah, sayur, dan liquid"
+                  fill
+                  sizes="(min-width: 768px) 80vw, 100vw"
+                  className="object-contain bg-white"
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -753,6 +801,66 @@ export default function Home() {
               >
                 <WhatsAppIcon className="w-5 h-5" />
                 Hubungi Kami Sekarang
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════════════════
+            APA SAJA BISA DI-FREEZE DRY?
+        ══════════════════════════════════════════════ */}
+        <section className="py-24 bg-white">
+          <div className="max-w-5xl mx-auto px-4">
+            <SectionHeading
+              title="Apa Saja yang Bisa Di-Freeze Dry?"
+              subtitle="Hampir semua jenis bahan makanan dapat diproses — buah, sayuran, daging, hingga cairan"
+            />
+
+            <div className="rounded-3xl overflow-hidden shadow-xl border border-gray-100">
+              <div className="bg-gray-900 px-6 py-4 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <span className="text-orange-500 text-xl">📋</span>
+                  <p className="text-white font-bold">Daftar Lengkap: 30+ Buah · 25+ Sayuran · 20+ Liquid &amp; Ekstrak</p>
+                </div>
+                <span className="text-gray-400 text-xs hidden sm:block">Before → Process → After</span>
+              </div>
+              <div className="relative w-full bg-gray-50" style={{ aspectRatio: "16/9", minHeight: "340px" }}>
+                <Image
+                  src={fullInfographicImg}
+                  alt="Daftar lengkap bahan yang bisa di-freeze dry: buah, sayuran, cairan dan ekstrak"
+                  fill
+                  sizes="(min-width: 768px) 80vw, 100vw"
+                  className="object-contain"
+                />
+              </div>
+            </div>
+
+            <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+              {[
+                { icon: "🍓", label: "30+ Jenis Buah", sub: "Stroberi, mangga, durian, apel, dan lainnya" },
+                { icon: "🥦", label: "25+ Sayuran", sub: "Brokoli, wortel, bayam, kale, dan lainnya" },
+                { icon: "🥛", label: "20+ Liquid & Ekstrak", sub: "Susu, jus, kaldu, herbal extract, dan lainnya" },
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-4 bg-orange-50 border border-orange-100 rounded-2xl px-5 py-4">
+                  <span className="text-3xl flex-shrink-0">{item.icon}</span>
+                  <div>
+                    <p className="font-extrabold text-gray-900 text-sm">{item.label}</p>
+                    <p className="text-gray-500 text-xs mt-0.5">{item.sub}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 text-center">
+              <p className="text-gray-500 text-sm mb-4">Bahan Anda tidak ada di daftar? Tetap konsultasikan — kami bisa handle hampir semua bahan.</p>
+              <a
+                href={WA_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-orange-700 text-white font-extrabold px-8 py-4 rounded-2xl hover:bg-orange-800 transition-all shadow-lg shadow-orange-700/30"
+              >
+                <WhatsAppIcon className="w-5 h-5" />
+                Tanya Soal Bahan Saya
               </a>
             </div>
           </div>
@@ -931,27 +1039,26 @@ export default function Home() {
               subtitle="Mesin freeze dryer berstandar industri, kebersihan terjamin di setiap tahap"
             />
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[180px]">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[200px]">
               {galleryImages.map((img, i) => (
                 <div
                   key={i}
                   className={`relative overflow-hidden rounded-2xl group cursor-pointer ${
-                    i === 0 ? "col-span-2 row-span-2" : ""
+                    img.span ? "col-span-2 row-span-2" : ""
                   }`}
                 >
                   <Image
-                    src={img}
-                    alt={`Gallery proses freeze drying ${i + 1}`}
+                    src={img.src}
+                    alt={img.alt}
                     fill
-                    placeholder="blur"
-                    sizes="(min-width: 1024px) 25vw, 50vw"
-                    className="object-cover group-hover:scale-107 transition-transform duration-500"
-                    style={{ transform: "scale(1)" }}
+                    sizes={img.span ? "(min-width: 1024px) 50vw, 100vw" : "(min-width: 1024px) 25vw, 50vw"}
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
-                  {i === 0 && (
-                    <div className="absolute bottom-5 left-5 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2">
-                      <p className="text-gray-900 font-bold text-sm">Mesin Freeze Dryer Industri</p>
+                  {img.span && (
+                    <div className="absolute bottom-5 left-5 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2 shadow-lg">
+                      <p className="text-gray-900 font-bold text-sm">Aneka Produk Freeze Dried</p>
+                      <p className="text-gray-500 text-xs mt-0.5">Warna & nutrisi terjaga sempurna</p>
                     </div>
                   )}
                 </div>
