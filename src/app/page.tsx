@@ -15,9 +15,6 @@ import manggaImg from "@/assets/images/mangga.webp";
 import manggaJusBarImg from "@/assets/images/manggajusbar.webp";
 import pisangImg from "@/assets/images/pisang.webp";
 import fotoAwalHeroImg from "@/assets/images/fotoawalhero.webp";
-import slider1Img from "@/assets/images/slider1.webp";
-import slider2Img from "@/assets/images/slider2.webp";
-import slider3Img from "@/assets/images/slider3.webp";
 import tokpedIcon from "@/assets/images/tokped.svg";
 
 // New rich photo assets
@@ -42,7 +39,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 const WA_LINK =
-  "https://wa.me/+6282124985339?text=Halo%20Raja%20Freeze%20Dried%20Food%2C%20saya%20ingin%20konsultasi%20jasa%20freeze%20drying";
+  "https://wa.me/6282121292937?text=Halo%20Raja%20Freeze%20Dried%20Food%2C%20saya%20ingin%20konsultasi%20jasa%20freeze%20drying";
 
 // ─── Data ───────────────────────────────────────────────────────────────────
 
@@ -590,20 +587,42 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Visual: Before / During / After */}
-            <div className="mt-14 rounded-3xl overflow-hidden border border-orange-200 shadow-lg">
-              <div className="bg-orange-700 px-6 py-3 flex items-center gap-3">
-                <span className="text-white text-lg">❄️</span>
-                <p className="text-white font-bold text-sm">Visualisasi Proses: Bahan Segar → Mesin → Produk Jadi</p>
-              </div>
-              <div className="relative w-full bg-white" style={{ aspectRatio: "3/4", maxHeight: "560px" }}>
+            {/* Visual: Before / During / After — 2-column layout */}
+            <div className="mt-14 rounded-3xl overflow-hidden border border-orange-200 shadow-xl grid grid-cols-1 lg:grid-cols-2">
+              {/* Left: image fills column */}
+              <div className="relative min-h-[420px] lg:min-h-[560px]">
                 <Image
                   src={beforeDuringAfterImg}
                   alt="Proses freeze drying: sebelum, selama, dan sesudah — buah, sayur, dan liquid"
                   fill
-                  sizes="(min-width: 768px) 80vw, 100vw"
-                  className="object-contain"
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  className="object-cover object-center"
                 />
+              </div>
+              {/* Right: typography */}
+              <div className="bg-orange-700 p-10 lg:p-14 flex flex-col justify-center">
+                <p className="text-orange-200 text-xs font-extrabold uppercase tracking-[0.2em] mb-4">3 Tahap Sederhana</p>
+                <h3 className={`text-3xl lg:text-4xl font-black text-white leading-tight ${playfair.className}`}>
+                  Dari Segar ke<br />Produk Premium
+                </h3>
+                <div className="mt-8 space-y-6">
+                  {[
+                    { num: "01", label: "BEFORE", title: "Bahan Segar", desc: "Buah, sayur, atau liquid dalam kondisi segar disiapkan dan dibersihkan sebelum masuk proses." },
+                    { num: "02", label: "DURING", title: "Di Dalam Mesin", desc: "Bahan dibekukan lalu kadar airnya disublimasikan dalam ruang vakum selama 3–7 hari." },
+                    { num: "03", label: "AFTER",  title: "Produk Jadi", desc: "Hasil akhir: ringan, renyah, nutrisi 95% terjaga, tahan hingga 25 tahun tanpa pengawet." },
+                  ].map((step) => (
+                    <div key={step.num} className="flex gap-5 items-start">
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                        <span className="text-white font-black text-xs">{step.num}</span>
+                      </div>
+                      <div>
+                        <p className="text-orange-300 text-[10px] font-extrabold uppercase tracking-widest">{step.label}</p>
+                        <p className="text-white font-extrabold text-base mt-0.5">{step.title}</p>
+                        <p className="text-orange-100 text-sm leading-relaxed mt-1">{step.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -676,19 +695,41 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Before & After visual */}
-            <div className="mt-16 rounded-3xl overflow-hidden shadow-xl border border-gray-100">
-              <div className="bg-gray-800 px-6 py-4 flex items-center gap-3">
-                <span className="text-orange-500 text-lg">📊</span>
-                <p className="text-white font-bold">Lihat Sendiri Perbedaannya — Before &amp; After Freeze Drying</p>
+            {/* Before & After visual — 2-column layout, image kanan */}
+            <div className="mt-16 rounded-3xl overflow-hidden shadow-xl border border-gray-100 grid grid-cols-1 lg:grid-cols-2">
+              {/* Left: typography stats */}
+              <div className="bg-gray-900 p-10 lg:p-14 flex flex-col justify-center order-2 lg:order-1">
+                <p className="text-orange-500 text-xs font-extrabold uppercase tracking-[0.2em] mb-4">Bukti Nyata</p>
+                <h3 className={`text-3xl lg:text-4xl font-black text-white leading-tight ${playfair.className}`}>
+                  Lihat Sendiri<br />Perbedaannya
+                </h3>
+                <p className="mt-4 text-gray-400 text-sm leading-relaxed">
+                  Freeze drying bukan sekadar mengeringkan — ini adalah pelestarian sempurna. Warna, bentuk, aroma, dan nutrisi tetap ada.
+                </p>
+                <div className="mt-8 space-y-4">
+                  {[
+                    { metric: "95%", label: "Nutrisi terjaga", sub: "vs 40% metode konvensional", color: "text-orange-400" },
+                    { metric: "25 thn", label: "Daya simpan", sub: "tanpa bahan pengawet kimia", color: "text-amber-400" },
+                    { metric: "90%", label: "Berat berkurang", sub: "jauh lebih efisien di logistik", color: "text-yellow-400" },
+                  ].map((s) => (
+                    <div key={s.label} className="flex items-center gap-5 bg-gray-800 rounded-2xl px-5 py-4">
+                      <span className={`text-3xl font-black tabular-nums ${s.color} ${playfair.className}`}>{s.metric}</span>
+                      <div>
+                        <p className="text-white font-bold text-sm">{s.label}</p>
+                        <p className="text-gray-500 text-xs mt-0.5">{s.sub}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="relative w-full" style={{ aspectRatio: "3/4", maxHeight: "600px" }}>
+              {/* Right: image fills column */}
+              <div className="relative min-h-[420px] lg:min-h-[580px] order-1 lg:order-2">
                 <Image
                   src={beforeAfterComparisonImg}
-                  alt="Before and after freeze drying comparison — buah, sayur, dan liquid"
+                  alt="Before and after freeze drying — perbandingan visual buah segar vs freeze dried"
                   fill
-                  sizes="(min-width: 768px) 80vw, 100vw"
-                  className="object-contain bg-white"
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  className="object-cover object-center"
                 />
               </div>
             </div>
@@ -816,22 +857,57 @@ export default function Home() {
               subtitle="Hampir semua jenis bahan makanan dapat diproses — buah, sayuran, daging, hingga cairan"
             />
 
-            <div className="rounded-3xl overflow-hidden shadow-xl border border-gray-100">
-              <div className="bg-gray-900 px-6 py-4 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <span className="text-orange-500 text-xl">📋</span>
-                  <p className="text-white font-bold">Daftar Lengkap: 30+ Buah · 25+ Sayuran · 20+ Liquid &amp; Ekstrak</p>
-                </div>
-                <span className="text-gray-400 text-xs hidden sm:block">Before → Process → After</span>
-              </div>
-              <div className="relative w-full bg-gray-50" style={{ aspectRatio: "16/9", minHeight: "340px" }}>
+            {/* Infographic + sidebar stats — no empty space */}
+            <div className="rounded-3xl overflow-hidden shadow-xl border border-gray-100 grid grid-cols-1 lg:grid-cols-[1fr_280px]">
+              {/* Image: full crop, shows top section (fruits) */}
+              <div className="relative h-[380px] sm:h-[480px] lg:h-auto lg:min-h-[520px]">
                 <Image
                   src={fullInfographicImg}
-                  alt="Daftar lengkap bahan yang bisa di-freeze dry: buah, sayuran, cairan dan ekstrak"
+                  alt="Daftar lengkap bahan freeze dry: 30+ buah, 25+ sayuran, 20+ liquid"
                   fill
-                  sizes="(min-width: 768px) 80vw, 100vw"
-                  className="object-contain"
+                  sizes="(min-width: 1024px) 60vw, 100vw"
+                  className="object-cover object-top"
                 />
+                {/* Overlay label */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                <div className="absolute bottom-5 left-5 right-5">
+                  <p className="text-white text-xs font-bold uppercase tracking-widest opacity-80">Infografis Lengkap</p>
+                  <p className="text-white font-extrabold text-lg mt-1">30+ Buah · 25+ Sayuran · 20+ Liquid</p>
+                </div>
+              </div>
+              {/* Right sidebar: categories */}
+              <div className="bg-gray-900 p-8 flex flex-col justify-between">
+                <div>
+                  <p className="text-orange-500 text-[10px] font-extrabold uppercase tracking-[0.18em] mb-3">Semua Bisa Di-FD</p>
+                  <h4 className={`text-2xl font-black text-white leading-tight ${playfair.className}`}>
+                    75+<br />Kategori<br />Bahan
+                  </h4>
+                  <div className="mt-6 space-y-3">
+                    {[
+                      { icon: "🍓", cat: "Buah Tropis",      count: "30+", ex: "Stroberi, mangga, durian, apel" },
+                      { icon: "🥦", cat: "Sayuran",          count: "25+", ex: "Brokoli, bayam, wortel, kale" },
+                      { icon: "🥛", cat: "Liquid & Ekstrak", count: "20+", ex: "Susu, jus, kaldu, herbal" },
+                    ].map((item) => (
+                      <div key={item.cat} className="bg-gray-800 rounded-xl p-4">
+                        <div className="flex items-center justify-between mb-1">
+                          <span className="text-xl">{item.icon}</span>
+                          <span className={`text-orange-500 font-black text-xl tabular-nums ${playfair.className}`}>{item.count}</span>
+                        </div>
+                        <p className="text-white font-bold text-sm">{item.cat}</p>
+                        <p className="text-gray-500 text-xs mt-0.5 leading-snug">{item.ex}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <a
+                  href={WA_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 flex items-center justify-center gap-2 bg-orange-700 text-white font-bold py-3 rounded-xl hover:bg-orange-800 transition-colors text-sm"
+                >
+                  <WhatsAppIcon className="w-4 h-4" />
+                  Tanya Bahan Saya
+                </a>
               </div>
             </div>
 
@@ -1236,7 +1312,7 @@ export default function Home() {
             </div>
 
             <p className="mt-10 text-gray-600 text-sm">
-              📍 Jakarta, Indonesia &nbsp;·&nbsp; ☎️ +62 821-2498-5339 &nbsp;·&nbsp;
+              📍 Jakarta, Indonesia &nbsp;·&nbsp; ☎️ +62 821-2129-2937 &nbsp;·&nbsp;
               <a href="mailto:info@rajafreezdriedfood.com" className="hover:text-gray-400 transition-colors">
                 info@rajafreezdriedfood.com
               </a>

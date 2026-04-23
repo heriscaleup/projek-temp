@@ -48,7 +48,7 @@ const Header = () => {
           {/* CTA Button */}
           <div className="hidden md:block">
             <a
-              href="https://wa.me/+6282124985339?text=Halo%2C%20saya%20tertarik%20dengan%20produk%20Anda"
+              href="https://wa.me/6282121292937?text=Halo%2C%20saya%20tertarik%20dengan%20produk%20Anda"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-600 text-white px-6 py-2 rounded-full font-medium hover:bg-green-700 transition-colors duration-200"
@@ -89,7 +89,7 @@ const Header = () => {
                 </Link>
               ))}
               <a
-                href="https://wa.me/+6282124985339?text=Halo%2C%20saya%20tertarik%20dengan%20produk%20Anda"
+                href="https://wa.me/6282121292937?text=Halo%2C%20saya%20tertarik%20dengan%20produk%20Anda"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-600 text-white px-6 py-2 rounded-full font-medium hover:bg-green-700 transition-colors duration-200 text-center"
