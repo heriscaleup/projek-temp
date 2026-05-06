@@ -9,8 +9,8 @@
 | Tanggal Publish | Judul / Topik | Keyword Fokus | PIC | Status |
 |---|---|---|---|---|
 | 2026-05-12 | Harga Jasa Freeze Drying per Kg: Panduan Lengkap | harga jasa freeze drying | — | ⬜ Draft |
-| 2026-05-19 | Freeze Dried untuk UMKM: Mulai dari Mana? | freeze dried untuk UMKM | — | ⬜ Outline |
-| 2026-05-26 | Panduan Memilih Supplier Freeze Dried Terpercaya | supplier freeze dried Indonesia | — | ⬜ Outline |
+| 2026-05-19 | Freeze Dried untuk UMKM: Mulai dari Mana? | freeze dried untuk UMKM | — | 📝 Draft |
+| 2026-05-26 | Panduan Memilih Supplier Freeze Dried Terpercaya | supplier freeze dried Indonesia | — | 📝 Draft |
 
 ---
 
