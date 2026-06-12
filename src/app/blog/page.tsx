@@ -1,138 +1,84 @@
-// src/app/blog/page.tsx
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Image from 'next/image';
-import { getAllPosts, type PostMeta } from '@/lib/markdown';
+import Image from "next/image";
+import { getAllPosts, type PostMeta } from "@/lib/markdown";
 
 export const metadata = {
   title: "Blog - Raja Freeze Dried Food | Tips dan Informasi Freeze Drying",
   description: "Baca artikel terbaru tentang teknologi freeze drying, tips bisnis makanan sehat, dan informasi terkini dari Raja Freeze Dried Food.",
-  alternates: { canonical: '/blog' },
+  alternates: { canonical: "/blog" },
 };
+
+const fallbackImage = "/raja-freeze-dried-food-revolusi-makanan-sehat-tekn.jpg";
+
+function safeImage(src?: string) {
+  return src && (src.startsWith("/") || src.startsWith("http")) ? src : fallbackImage;
+}
 
 export default async function BlogPage() {
   const articles: PostMeta[] = await getAllPosts();
+  const [featured, ...rest] = articles;
 
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-gray-50">
-        <section className="bg-gradient-to-br from-green-50 to-blue-50 py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Blog Raja Freeze Dried Food
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Temukan tips, informasi, dan wawasan terbaru tentang teknologi freeze drying, 
-              bisnis makanan sehat, dan tren industri makanan.
-            </p>
+      <main className="min-h-screen bg-[#fbfaf7] text-neutral-950">
+        <section className="border-b border-black/10">
+          <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+            <Link href="/" className="mb-10 inline-flex text-sm font-semibold text-neutral-600 hover:text-neutral-950">← Kembali ke Beranda</Link>
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.24em] text-orange-700">Freeze Drying Journal</p>
+            <h1 className="max-w-4xl text-5xl font-black leading-[0.98] tracking-[-0.055em] sm:text-6xl lg:text-7xl">Blog Raja Freeze Dried Food</h1>
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-neutral-600 sm:text-xl">Tips produksi, bisnis, nutrisi, dan inspirasi pengembangan produk freeze dried dalam format editorial yang rapi dan mudah dibaca.</p>
           </div>
         </section>
 
-        <section className="py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {featured && (
+          <section className="border-b border-black/10">
+            <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+              <Link href={`/blog/${featured.slug}`} className="group grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+                <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] border border-black/10 bg-neutral-100">
+                  <Image src={safeImage(featured.image)} alt={featured.title} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover transition duration-700 group-hover:scale-[1.03]" priority />
+                </div>
+                <div>
+                  <div className="mb-5 flex flex-wrap items-center gap-3 text-sm text-neutral-500">
+                    <span className="font-black uppercase tracking-[0.18em] text-orange-700">{featured.category}</span><span>•</span>
+                    <time>{new Date(featured.date).toLocaleDateString("id-ID", { year: "numeric", month: "long", day: "numeric" })}</time><span>•</span>
+                    <span>{featured.readingTime ?? 4} menit baca</span>
+                  </div>
+                  <h2 className="text-3xl font-black leading-tight tracking-[-0.035em] sm:text-5xl">{featured.title}</h2>
+                  <p className="mt-5 text-lg leading-8 text-neutral-600">{featured.excerpt}</p>
+                  <span className="mt-8 inline-flex rounded-full border border-black/10 bg-white px-5 py-3 text-sm font-bold group-hover:border-neutral-950">Baca artikel utama →</span>
+                </div>
+              </Link>
+            </div>
+          </section>
+        )}
+
+        <section className="py-14 lg:py-20">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             {articles.length === 0 ? (
-              <div className="text-center py-16">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                  Belum Ada Artikel
-                </h2>
-                <p className="text-gray-600">
-                  Tambahkan file .md baru di folder src/content/blog untuk mulai menulis.
-                </p>
-              </div>
+              <div className="rounded-[2rem] border border-black/10 bg-white p-10 text-center"><h2 className="text-2xl font-black">Belum Ada Artikel</h2><p className="mt-3 text-neutral-600">Tambahkan file .md baru di folder src/content/blog.</p></div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {articles.map((article) => (
-                  <article
-                    key={article.slug}
-                    className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
-                  >
-                    <div className="p-6">
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">
-                          {article.category}
-                        </span>
-                        <time className="text-gray-500 text-sm">
-                          {new Date(article.date).toLocaleDateString("id-ID", {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                          })}
-                        </time>
-                      </div>
-
-                      {article.image && (
-                        <div className="mb-4">
-                          {(article.image.startsWith('http') || article.image.startsWith('/')) ? (
-                            <Image
-                              src={article.image}
-                              alt={article.title}
-                              width={400}
-                              height={200}
-                              sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                              className="w-full h-48 object-cover rounded-lg"
-                            />
-                          ) : (
-                            <div className="text-center">
-                              <div className="text-6xl mb-4">{article.image}</div>
-                            </div>
-                          )}
-                        </div>
-                      )}
-
-                      <h2 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
-                        {article.title}
-                      </h2>
-
-                      <p className="text-gray-600 mb-4 line-clamp-3">
-                        {article.excerpt}
-                      </p>
-
-                      <Link
-                        href={`/blog/${article.slug}`}
-                        className="inline-flex items-center text-green-600 font-medium hover:text-green-700 transition-colors"
-                      >
-                        Baca Selengkapnya
-                        <svg
-                          className="ml-2 w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 5l7 7-7 7"
-                          />
-                        </svg>
+              <>
+                <div className="mb-8 flex items-end justify-between border-b border-black/10 pb-5"><h2 className="text-2xl font-black tracking-[-0.03em]">Terbaru dari blog</h2><p className="text-sm text-neutral-500">{articles.length} artikel</p></div>
+                <div className="grid gap-x-7 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
+                  {rest.map((article) => (
+                    <article key={article.slug} className="group border-b border-black/10 pb-8">
+                      <Link href={`/blog/${article.slug}`} className="relative block aspect-[16/10] overflow-hidden rounded-3xl border border-black/10 bg-neutral-100">
+                        <Image src={safeImage(article.image)} alt={article.title} fill sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" className="object-cover transition duration-700 group-hover:scale-[1.04]" />
                       </Link>
-                    </div>
-                  </article>
-                ))}
-              </div>
+                      <div className="pt-5">
+                        <div className="mb-3 flex flex-wrap items-center gap-2 text-xs text-neutral-500"><span className="font-black uppercase tracking-[0.16em] text-orange-700">{article.category}</span><span>•</span><time>{new Date(article.date).toLocaleDateString("id-ID", { day: "numeric", month: "short", year: "numeric" })}</time></div>
+                        <h3 className="text-xl font-black leading-tight tracking-[-0.025em]"><Link href={`/blog/${article.slug}`} className="group-hover:text-neutral-600">{article.title}</Link></h3>
+                        <p className="mt-3 line-clamp-3 text-[15px] leading-7 text-neutral-600">{article.excerpt}</p>
+                        <Link href={`/blog/${article.slug}`} className="mt-5 inline-flex text-sm font-bold underline decoration-neutral-300 underline-offset-4 hover:decoration-neutral-950">Baca selengkapnya</Link>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </>
             )}
-          </div>
-        </section>
-
-        <section className="py-16 bg-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Dapatkan Update Terbaru
-            </h2>
-            <p className="text-lg text-gray-600 mb-8">
-              Berlangganan newsletter kami untuk mendapatkan artikel terbaru, tips, 
-              dan informasi eksklusif tentang freeze drying.
-            </p>
-            <a
-              href="https://wa.me/6282121292937?text=Halo%20Raja%20Freeze%20Dried%20Food,%20saya%20ingin%20berlangganan%20newsletter%20untuk%20mendapatkan%20update%20terbaru"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-green-700 transition-colors duration-200 inline-block"
-            >
-              Berlangganan via WhatsApp
-            </a>
           </div>
         </section>
       </main>

@@ -409,7 +409,7 @@ export default function Home() {
         {/* ══════════════════════════════════════════════
             HERO
         ══════════════════════════════════════════════ */}
-        <section className="relative bg-white overflow-hidden">
+        <section id="beranda" className="relative bg-white overflow-hidden">
           {/* Angled warm bg */}
           <div
             className="absolute top-0 right-0 h-full w-[55%] bg-orange-50 hidden lg:block"
@@ -544,7 +544,7 @@ export default function Home() {
         {/* ══════════════════════════════════════════════
             HOW IT WORKS
         ══════════════════════════════════════════════ */}
-        <section className="py-24 bg-orange-50">
+        <section id="cara-kerja" className="py-24 bg-orange-50 scroll-mt-24">
           <div
             ref={howRef.ref}
             className={`max-w-7xl mx-auto px-4 section-reveal ${howRef.visible ? "revealed" : ""}`}
@@ -643,7 +643,7 @@ export default function Home() {
         {/* ══════════════════════════════════════════════
             WHY FD TECHNOLOGY
         ══════════════════════════════════════════════ */}
-        <section className="py-24 bg-white">
+        <section id="manfaat" className="py-24 bg-white scroll-mt-24">
           <div
             ref={whyRef.ref}
             className={`max-w-7xl mx-auto px-4 section-reveal ${whyRef.visible ? "revealed" : ""}`}
@@ -1021,10 +1021,12 @@ export default function Home() {
           </div>
         </section>
 
+        <div id="kontak" className="scroll-mt-24" />
+
         {/* ══════════════════════════════════════════════
             PRODUCTS SHOWCASE
         ══════════════════════════════════════════════ */}
-        <section id="products" className="py-24 bg-gray-50">
+        <section id="products" className="py-24 bg-gray-50 scroll-mt-24">
           <div
             ref={productsRef.ref}
             className={`max-w-7xl mx-auto px-4 section-reveal ${productsRef.visible ? "revealed" : ""}`}
