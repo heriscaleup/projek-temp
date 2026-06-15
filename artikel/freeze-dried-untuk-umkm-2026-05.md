@@ -148,4 +148,4 @@ Jika margin positif dan ada repeat order, pertimbangkan untuk:
 
 Jalan paling aman dimulai dari sampling kecil. Raja Freeze Dried Food membantu UMKM dari tahap awal — dari konsultasi pemilihan produk, proses freeze drying, hingga rekomendasi kemasan.
 
-[Hubungi kami via WhatsApp](https://wa.me/6282121292937) untuk diskusi sampling tanpa komitmen.
+[Hubungi kami via WhatsApp](https://wa.me/6282124985339) untuk diskusi sampling tanpa komitmen.

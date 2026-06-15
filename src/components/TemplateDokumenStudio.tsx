@@ -41,7 +41,7 @@ const company = {
     bankName: "BCA",
     accountNumber: "6090125182",
     accountHolder: "Heri Asari",
-    whatsapp: "+62 821-2129-2937",
+    whatsapp: "+62 821-2498-5339",
     confirmationNote:
       "Mohon kirim bukti transfer ke WhatsApp setelah pembayaran agar proses verifikasi dan produksi dapat dipercepat.",
   },

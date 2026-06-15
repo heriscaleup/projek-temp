@@ -35,7 +35,7 @@ const Header = () => {
             ))}
           </nav>
 
-          <a href="https://wa.me/6282121292937?text=Halo%2C%20saya%20tertarik%20dengan%20jasa%20freeze%20dried" target="_blank" rel="noopener noreferrer" className="hidden rounded-full bg-orange-700 px-5 py-2.5 text-sm font-black text-white transition hover:bg-orange-800 focus:outline-none focus:ring-2 focus:ring-orange-500/40 md:inline-flex">
+          <a href="https://wa.me/6282124985339?text=Halo%2C%20saya%20tertarik%20dengan%20jasa%20freeze%20dried" target="_blank" rel="noopener noreferrer" className="hidden rounded-full bg-orange-700 px-5 py-2.5 text-sm font-black text-white transition hover:bg-orange-800 focus:outline-none focus:ring-2 focus:ring-orange-500/40 md:inline-flex">
             Konsultasi
           </a>
 
@@ -57,7 +57,7 @@ const Header = () => {
                   {item.name}
                 </Link>
               ))}
-              <a href="https://wa.me/6282121292937?text=Halo%2C%20saya%20tertarik%20dengan%20jasa%20freeze%20dried" target="_blank" rel="noopener noreferrer" className="rounded-2xl bg-orange-700 px-4 py-3 text-center text-sm font-black text-white hover:bg-orange-800">
+              <a href="https://wa.me/6282124985339?text=Halo%2C%20saya%20tertarik%20dengan%20jasa%20freeze%20dried" target="_blank" rel="noopener noreferrer" className="rounded-2xl bg-orange-700 px-4 py-3 text-center text-sm font-black text-white hover:bg-orange-800">
                 Konsultasi via WhatsApp
               </a>
             </nav>

@@ -11,7 +11,7 @@ import { Article, BreadcrumbList, WithContext } from "schema-dts";
 export type PageProps = { params: Promise<{ slug: string }> };
 const SITE_URL = "https://rajafreezdriedfood.com";
 const fallbackImage = "/raja-freeze-dried-food-revolusi-makanan-sehat-tekn.jpg";
-const WA_LINK = "https://wa.me/6282121292937?text=Halo%20Raja%20Freeze%20Dried%20Food%2C%20saya%20ingin%20konsultasi%20setelah%20membaca%20blog";
+const WA_LINK = "https://wa.me/6282124985339?text=Halo%20Raja%20Freeze%20Dried%20Food%2C%20saya%20ingin%20konsultasi%20setelah%20membaca%20blog";
 
 function safeImage(src?: string) { return src && (src.startsWith("/") || src.startsWith("http")) ? src : fallbackImage; }
 function toAbsoluteUrl(imagePath: string): string { if (!imagePath) return ""; if (imagePath.startsWith("http")) return imagePath; return `${SITE_URL}${imagePath.startsWith("/") ? imagePath : `/${imagePath}`}`; }

@@ -114,4 +114,4 @@ Beberapa strategi agar negosiasi harga berjalan efektif:
 
 Setiap proyek punya kebutuhan unik. Raja Freeze Dried Food menyediakan sesi konsultasi gratis untuk membantu Anda menghitung estimasi biaya yang sesuai — mulai dari sampling hingga produksi batch reguler.
 
-[Hubungi kami via WhatsApp](https://wa.me/6282121292937) atau kunjungi [halaman kontak](/contact) untuk mulai diskusi.
+[Hubungi kami via WhatsApp](https://wa.me/6282124985339) atau kunjungi [halaman kontak](/contact) untuk mulai diskusi.

@@ -39,7 +39,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 const WA_LINK =
-  "https://wa.me/6282121292937?text=Halo%20Raja%20Freeze%20Dried%20Food%2C%20saya%20ingin%20konsultasi%20jasa%20freeze%20drying";
+  "https://wa.me/6282124985339?text=Halo%20Raja%20Freeze%20Dried%20Food%2C%20saya%20ingin%20konsultasi%20jasa%20freeze%20drying";
 
 // ─── Data ───────────────────────────────────────────────────────────────────
 
@@ -1314,7 +1314,7 @@ export default function Home() {
             </div>
 
             <p className="mt-10 text-gray-600 text-sm">
-              📍 Jakarta, Indonesia &nbsp;·&nbsp; ☎️ +62 821-2129-2937 &nbsp;·&nbsp;
+              📍 Jakarta, Indonesia &nbsp;·&nbsp; ☎️ +62 821-2498-5339 &nbsp;·&nbsp;
               <a href="mailto:info@rajafreezdriedfood.com" className="hover:text-gray-400 transition-colors">
                 info@rajafreezdriedfood.com
               </a>

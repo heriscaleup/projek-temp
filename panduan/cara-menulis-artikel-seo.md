@@ -81,7 +81,7 @@ Setiap artikel **wajib** punya minimal 1 internal link. Gunakan anchor text desk
 [Nama bisnis/brand Anda] layak mendapat mitra produksi yang tepat. Raja Freeze Dried Food 
 siap mendampingi dari tahap sampling hingga produksi batch penuh.
 
-[Hubungi kami via WhatsApp](https://wa.me/6282121292937) atau kunjungi [halaman kontak](/contact) 
+[Hubungi kami via WhatsApp](https://wa.me/6282124985339) atau kunjungi [halaman kontak](/contact) 
 untuk konsultasi gratis.
 ```
 

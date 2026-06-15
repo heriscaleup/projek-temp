@@ -82,7 +82,7 @@ const jsonLdLocalBusiness: WithContext<LocalBusiness> = {
   name: "Raja Freeze Dried Food",
   description: "Jasa freeze drying makanan custom, OEM, dan private label di Jakarta.",
   url: "https://rajafreezdriedfood.com",
-  telephone: "+6282121292937",
+  telephone: "+6282124985339",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Jakarta",

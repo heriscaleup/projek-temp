@@ -131,4 +131,4 @@ Kemitraan dengan supplier freeze dried Indonesia yang tepat adalah fondasi bisni
 
 Raja Freeze Dried Food menyediakan layanan sampling, konsultasi pemilihan produk, dan produksi batch reguler dengan standar GMP dan transparansi penuh di setiap tahap.
 
-[Hubungi kami via WhatsApp](https://wa.me/6282121292937) atau kunjungi [halaman kontak](/contact) untuk konsultasi gratis dan permintaan sampel.
+[Hubungi kami via WhatsApp](https://wa.me/6282124985339) atau kunjungi [halaman kontak](/contact) untuk konsultasi gratis dan permintaan sampel.
