@@ -4,6 +4,7 @@ import "./globals.css";
 import { JsonLd } from "@/components/JsonLd";
 import { Organization, WebSite, WithContext } from "schema-dts";
 import FloatingWidgetsWrapper from "@/components/FloatingWidgetsWrapper";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -85,6 +86,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id">
+      <head>
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-QKP92JDH0F"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-QKP92JDH0F');
+          `}
+        </Script>
+      </head>
       <body className={inter.className}>
         <JsonLd data={jsonLdOrganization} />
         <JsonLd data={jsonLdWebsite} />
