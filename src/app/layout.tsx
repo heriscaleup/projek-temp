@@ -107,8 +107,56 @@ export default function RootLayout({
           {children}
           <FloatingWidgetsWrapper />
         </div>
-      </body>
+        <Script id="ga4-lead-events" strategy="afterInteractive">
+          {`
+            (function () {
+              if (window.__ADS_AGENT_GA4_LEAD_TRACKER__) return;
+              window.__ADS_AGENT_GA4_LEAD_TRACKER__ = true;
+
+              function sendEvent(name, params) {
+                if (typeof window.gtag !== 'function') return;
+                window.gtag('event', name, Object.assign({
+                  page_location: window.location.href,
+                  page_title: document.title
+                }, params || {}));
+              }
+
+              document.addEventListener('click', function (event) {
+                var link = event.target && event.target.closest ? event.target.closest('a[href]') : null;
+                if (!link) return;
+                var href = link.getAttribute('href') || '';
+                var text = (link.innerText || link.getAttribute('aria-label') || '').trim().slice(0, 120);
+                var lowerHref = href.toLowerCase();
+                var lowerText = text.toLowerCase();
+                var params = { link_url: href, link_text: text };
+
+                if (lowerHref.indexOf('wa.me') !== -1 || lowerHref.indexOf('api.whatsapp.com') !== -1 || lowerHref.indexOf('whatsapp') !== -1) {
+                  sendEvent('wa_click', params);
+                  sendEvent('generate_lead', Object.assign({ lead_type: 'whatsapp' }, params));
+                  return;
+                }
+
+                if (lowerHref.indexOf('/konsultasi') !== -1 || lowerHref.indexOf('/contact') !== -1 || lowerText.indexOf('konsultasi') !== -1 || lowerText.indexOf('hubungi') !== -1 || lowerText.indexOf('audit') !== -1) {
+                  sendEvent('click_consultation', params);
+                }
+              }, true);
+
+              document.addEventListener('submit', function (event) {
+                var form = event.target;
+                if (!form || !form.tagName || form.tagName.toLowerCase() !== 'form') return;
+                var params = {
+                  form_id: form.id || '',
+                  form_name: form.getAttribute('name') || '',
+                  form_action: form.getAttribute('action') || window.location.href
+                };
+                sendEvent('form_submit', params);
+                sendEvent('generate_lead', Object.assign({ lead_type: 'form' }, params));
+              }, true);
+            })();
+          `}
+        </Script>      </body>
     </html>
   );
 }
+
 
