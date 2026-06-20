@@ -87,17 +87,18 @@ export default function RootLayout({
   return (
     <html lang="id">
       <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-QKP92JDH0F"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-QKP92JDH0F');
-            `,
-          }}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-QKP92JDH0F"
+          strategy="afterInteractive"
         />
+        <Script id="ga4-base" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-QKP92JDH0F');
+          `}
+        </Script>
       </head>
       <body className={inter.className}>
         <JsonLd data={jsonLdOrganization} />
@@ -110,3 +111,4 @@ export default function RootLayout({
     </html>
   );
 }
+
