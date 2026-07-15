@@ -11,11 +11,19 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 export type PostFrontmatter = {
   title: string;
+  seoTitle?: string;
   date: string; // YYYY-MM-DD
+  updated?: string; // YYYY-MM-DD
   excerpt: string;
   category: string;
   image: string; // URL, emoji, or public path
+  imageAlt?: string;
   slug: string; // required and should match file name
+  author?: string;
+  reviewer?: string;
+  focusKeyword?: string;
+  searchIntent?: string;
+  tags?: string[];
   published?: boolean; // Optional: true if published, false or undefined if draft
 };
 
@@ -36,116 +44,15 @@ export type TableOfContentsItem = {
 
 const BLOG_DIR = path.join(process.cwd(), 'src', 'content', 'blog');
 const PUBLIC_DIR = path.join(process.cwd(), 'public');
-const IMAGE_EXTENSIONS = new Set(['.jpg', '.jpeg', '.png', '.webp', '.gif', '.svg', '.avif']);
-
-type ImageIndexEntry = {
-  path: string;
-  tokens: string[];
-};
-
-let cachedImageIndex: ImageIndexEntry[] | null = null;
-
-const CATEGORY_IMAGE_MAP: Record<string, string> = {
-  agribisnis: '/freeze-drying-solusi-makanan-sehat-praktis-raja-fo.jpg',
-  bisnis: '/freeze-dried-food-solusi-makanan-sehat-praktis-mod.jpg',
-  kebugaran: '/freeze-dried-food-nutrisi-optimal-praktis-aman-mas.jpg',
-  kesehatan: '/manfaat-freeze-dried-nutrisi-optimal-praktis-hidup.jpg',
-  inovasi: '/teknologi-freeze-drying-inovasi-pangan-sehat-masa-.jpg',
-  teknologi: '/teknologi-freeze-drying-solusi-makanan-sehat-prakt.jpg',
-  lifestyle: '/rahasia-freeze-drying-nutrisi-optimal-untuk-gaya-h.jpg',
-  parenting: '/buah-freeze-dried-rahasia-snack-sehat-praktis-dan-.jpg',
-  kuliner: '/keajaiban-freeze-drying-makanan-sehat-praktis-raja.jpg',
-  'rantai pasok': '/freeze-drying-revolusi-nutrisi-makanan-praktis-raj.jpg',
-  outdoor: '/freeze-drying-rahasia-buah-awet-nutrisi-terjaga.jpg',
-  panduan: '/menguak-teknologi-freeze-drying-makanan-sehat-prak.jpg',
-};
 
 const DEFAULT_POST_IMAGE = '/raja-freeze-dried-food-revolusi-makanan-sehat-tekn.jpg';
 
-function normalizeForTokens(value: string): string {
-  return value
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-}
-
-function tokenize(value: string): string[] {
-  const clean = value.replace(/\\/g, '/');
-  const segment = clean.split('/').filter(Boolean).pop() ?? clean;
-  const normalized = normalizeForTokens(segment);
-  return normalized ? normalized.split('-').filter(Boolean) : [];
-}
-
-async function buildImageIndex(): Promise<ImageIndexEntry[]> {
-  if (cachedImageIndex) return cachedImageIndex;
-
-  const entries: ImageIndexEntry[] = [];
-
-  async function walk(dir: string) {
-    const stats = await fs.readdir(dir, { withFileTypes: true });
-    for (const stat of stats) {
-      const fullPath = path.join(dir, stat.name);
-      if (stat.isDirectory()) {
-        await walk(fullPath);
-        continue;
-      }
-      const ext = path.extname(stat.name).toLowerCase();
-      if (!IMAGE_EXTENSIONS.has(ext)) continue;
-      const relative = `/${path.relative(PUBLIC_DIR, fullPath).split(path.sep).join('/')}`;
-      entries.push({ path: relative, tokens: tokenize(relative) });
-    }
-  }
-
-  try {
-    await walk(PUBLIC_DIR);
-  } catch {
-    // ignore errors while scanning public dir; we'll fallback later
-  }
-
-  cachedImageIndex = entries;
-  return cachedImageIndex;
-}
-
-async function findBestImageMatch(hints: string[]): Promise<string | null> {
-  if (hints.length === 0) return null;
-  const index = await buildImageIndex();
-  if (index.length === 0) return null;
-
-  let bestPath: string | null = null;
-  let bestScore = 0;
-
-  for (const rawHint of hints) {
-    const hintTokens = tokenize(rawHint);
-    if (hintTokens.length === 0) continue;
-
-    for (const entry of index) {
-      if (entry.tokens.length === 0) continue;
-      const score = entry.tokens.reduce((acc, token) => (hintTokens.includes(token) ? acc + 1 : acc), 0);
-      if (score > bestScore) {
-        bestScore = score;
-        bestPath = entry.path;
-      }
-    }
-  }
-
-  if (bestScore >= 2) {
-    return bestPath;
-  }
-
-  return null;
-}
-
 async function resolvePostImage({
-  slug,
   requestedImage,
-  category,
 }: {
-  slug: string;
   requestedImage: string;
-  category: string;
 }): Promise<string> {
   const trimmed = requestedImage.trim();
-  const hints: string[] = trimmed ? [trimmed, slug] : [slug];
 
   if (trimmed && (trimmed.startsWith('http://') || trimmed.startsWith('https://'))) {
     return trimmed;
@@ -163,16 +70,6 @@ async function resolvePostImage({
     } catch {
       // continue to fallback logic
     }
-  }
-
-  const bestMatch = await findBestImageMatch(hints);
-  if (bestMatch) {
-    return bestMatch;
-  }
-
-  const categoryImage = CATEGORY_IMAGE_MAP[category.toLowerCase()];
-  if (categoryImage) {
-    return categoryImage;
   }
 
   return DEFAULT_POST_IMAGE;
@@ -241,9 +138,6 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
       }
     }
 
-    // Slug: prefer filename slug; if frontmatter.slug present, allow it but do not require equality.
-    const fmSlug = typeof frontmatter.slug === 'string' && frontmatter.slug.trim() ? (frontmatter.slug as string) : slug;
-
     const processedContent = await unified()
       .use(remarkParse)
       .use(remarkGfm)
@@ -258,20 +152,34 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     const toc = extractToc(content);
 
     const resolvedImage = await resolvePostImage({
-      slug,
       requestedImage: typeof frontmatter.image === 'string' ? frontmatter.image : '',
-      category: frontmatter.category as string,
     });
+
+    const optionalString = (key: string): string | undefined => {
+      const value = frontmatter[key];
+      return typeof value === 'string' && value.trim() ? value.trim() : undefined;
+    };
+    const tags = Array.isArray(frontmatter.tags)
+      ? frontmatter.tags.filter((tag): tag is string => typeof tag === 'string' && Boolean(tag.trim()))
+      : undefined;
 
     const meta: PostMeta = {
       title: frontmatter.title as string,
+      seoTitle: optionalString('seoTitle'),
       date: date as string,
+      updated: optionalString('updated'),
       excerpt: frontmatter.excerpt as string,
       category: frontmatter.category as string,
       image: resolvedImage,
-      slug: fmSlug,
+      imageAlt: optionalString('imageAlt'),
+      slug,
+      author: optionalString('author'),
+      reviewer: optionalString('reviewer'),
+      focusKeyword: optionalString('focusKeyword'),
+      searchIntent: optionalString('searchIntent'),
+      tags,
       published: frontmatter.published === false ? false : true,
-      readingTime
+      readingTime,
     };
 
     return {
@@ -307,8 +215,19 @@ export async function getAllPosts(): Promise<PostMeta[]> {
 }
 
 export async function getRelatedPosts(currentSlug: string, category: string, limit: number = 3): Promise<PostMeta[]> {
-    const allPosts = await getAllPosts();
-    return allPosts
-        .filter(post => post.slug !== currentSlug && post.category === category)
-        .slice(0, limit);
+  const allPosts = await getAllPosts();
+  const current = allPosts.find((post) => post.slug === currentSlug);
+  const currentTags = new Set((current?.tags ?? []).map((tag) => tag.toLowerCase()));
+
+  return allPosts
+    .filter((post) => post.slug !== currentSlug)
+    .map((post) => {
+      const sharedTags = (post.tags ?? []).filter((tag) => currentTags.has(tag.toLowerCase())).length;
+      const categoryScore = post.category === category ? 3 : 0;
+      return { post, score: categoryScore + sharedTags * 2 };
+    })
+    .filter(({ score }) => score > 0)
+    .sort((a, b) => b.score - a.score || (a.post.date < b.post.date ? 1 : -1))
+    .slice(0, limit)
+    .map(({ post }) => post);
 }

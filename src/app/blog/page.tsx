@@ -5,8 +5,9 @@ import Image from "next/image";
 import { getAllPosts, type PostMeta } from "@/lib/markdown";
 
 export const metadata = {
-  title: "Blog - Raja Freeze Dried Food | Tips dan Informasi Freeze Drying",
-  description: "Baca artikel terbaru tentang teknologi freeze drying, tips bisnis makanan sehat, dan informasi terkini dari Raja Freeze Dried Food.",
+  title: { absolute: "Blog Freeze Drying: Teknologi, Produk, Bisnis & Keamanan" },
+  description: "Panduan berbasis sumber tentang proses freeze drying, mutu produk, penyimpanan, aplikasi kuliner, MPASI, bisnis, dan rantai pasok.",
+  keywords: ["freeze drying", "freeze dried food", "bisnis freeze dried", "teknologi pangan"],
   alternates: { canonical: "/blog" },
 };
 
@@ -38,7 +39,7 @@ export default async function BlogPage() {
             <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
               <Link href={`/blog/${featured.slug}`} className="group grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
                 <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] border border-black/10 bg-neutral-100">
-                  <Image src={safeImage(featured.image)} alt={featured.title} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover transition duration-700 group-hover:scale-[1.03]" priority />
+                  <Image src={safeImage(featured.image)} alt={featured.imageAlt ?? featured.title} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover transition duration-700 group-hover:scale-[1.03]" priority />
                 </div>
                 <div>
                   <div className="mb-5 flex flex-wrap items-center gap-3 text-sm text-neutral-500">
@@ -66,7 +67,7 @@ export default async function BlogPage() {
                   {rest.map((article) => (
                     <article key={article.slug} className="group border-b border-black/10 pb-8">
                       <Link href={`/blog/${article.slug}`} className="relative block aspect-[16/10] overflow-hidden rounded-3xl border border-black/10 bg-neutral-100">
-                        <Image src={safeImage(article.image)} alt={article.title} fill sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" className="object-cover transition duration-700 group-hover:scale-[1.04]" />
+                        <Image src={safeImage(article.image)} alt={article.imageAlt ?? article.title} fill sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" className="object-cover transition duration-700 group-hover:scale-[1.04]" />
                       </Link>
                       <div className="pt-5">
                         <div className="mb-3 flex flex-wrap items-center gap-2 text-xs text-neutral-500"><span className="font-black uppercase tracking-[0.16em] text-orange-700">{article.category}</span><span>•</span><time>{new Date(article.date).toLocaleDateString("id-ID", { day: "numeric", month: "short", year: "numeric" })}</time></div>

@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "rebuild:blog": "node scripts/rebuild-blog.mjs",
+    "audit:blog": "node scripts/audit-blog.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
