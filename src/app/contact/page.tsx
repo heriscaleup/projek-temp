@@ -138,6 +138,27 @@ export default function ContactPage() {
                   <p className="text-sm text-gray-600 mt-4">
                     Klik tombol di atas untuk terhubung langsung dengan kami via WhatsApp.
                   </p>
+
+                  {/* Hidden WebMCP form for AI Agents to trigger WhatsApp chat */}
+                  <form 
+                    action="https://wa.me/6282124985339" 
+                    method="GET" 
+                    style={{ display: 'none' }}
+                    {...{
+                      toolname: "startWhatsappChat",
+                      tooldescription: "Initiate a direct WhatsApp chat with Raja Freeze Dried Food",
+                      toolautosubmit: "true"
+                    } as any}
+                  >
+                    <input 
+                      type="text" 
+                      name="text" 
+                      {...{
+                        toolparamtitle: "messageText",
+                        toolparamdescription: "Pre-filled text message to send to Raja Freeze Dried Food support detailing your inquiry"
+                      } as any}
+                    />
+                  </form>
                 </div>
               </div>
 
