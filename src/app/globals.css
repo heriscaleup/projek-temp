@@ -1,4 +1,5 @@
 @import "tailwindcss" source("../");
+@plugin "@tailwindcss/typography";
 
 :root {
   /* Palet warna sesuai request: Putih, Hitam, Oranye Cerah */
